@@ -20,7 +20,7 @@
     "usersTable": {
       "title": "Test Table",
       "columns": [
-        "Components",
+        "Run Name",
         "Total",
         "Pass",
         "Fail",
@@ -30,7 +30,7 @@
       "data": [
         {
           "id": 1,
-          "components": "rsyslog container",
+          "run name": "rsyslog container",
           "total": "15",
           "pass": "12",
           "fail": "2",
@@ -39,7 +39,7 @@
         },
         {
           "id": 2,
-          "components": "ubi7 container",
+          "run name": "ubi7 container",
           "total": "22",
           "pass": "20",
           "fail": "1",
@@ -48,7 +48,7 @@
         },
         {
           "id": 3,
-          "components": "podman rpm",
+          "run name": "podman rpm",
           "total": "899",
           "pass": "836",
           "fail": "33",
@@ -57,7 +57,7 @@
         },
         {
           "id": 4,
-          "components": "buildah rpm",
+          "run name": "buildah rpm",
           "total": "48",
           "pass": "42",
           "fail": "5",

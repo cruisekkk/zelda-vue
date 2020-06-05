@@ -5,7 +5,7 @@
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
-            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> Container name: podman</h3>
+            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> Run name: podman</h3>
           </template>
           <div class="chart-area">
             <bar-chart style="height: 100%"
@@ -100,7 +100,7 @@ export default {
     return {
       page: 1,
       table1: {
-        title: "Test Cases",
+        title: "Tasks from podman",
         columns: [...tableColumns],
         data: [...tableData]
       },
