@@ -18,31 +18,11 @@
         </card>
       </div>
 
-      <!-- <div class="col-12">
-        <card :title="table1.title">
-          <div class="table-responsive">
-            <details-table :data="table1.data"
-                        :columns="table1.columns"
-                        thead-classes="text-primary">
-            </details-table>
-          </div>
-          <div class="text-center">
-          <v-pagination
-            v-model="page"
-            :length="6"
-            prev-icon="mdi-menu-left"
-            next-icon="mdi-menu-right"
-          ></v-pagination>
-        </div> 
-        </card>
-      </div> -->
 
       <div class="col-12">
         <card :title="table1.title">
           <div class="table-responsive">
-            <data-table :data="table1.data"
-                        :columns="table1.columns"
-                        thead-classes="text-primary">
+            <data-table thead-classes="text-primary">
 
             </data-table>
           </div>
@@ -56,43 +36,10 @@ import * as chartConfigs from '@/components/Charts/config';
 import TaskList from '../pages/Dashboard/TaskList';
 import UserTable from '../pages/Dashboard/UserTable';
 import config from '@/config';
-import {DetailsTable}  from "@/components";
 import {DataTable}  from "@/components";
-const tableColumns = ["Test Case Name", "Results", "Bug", "Comments"];
-const tableData = [
-  {
-    id: 1,
-    "test case name": "check signature",
-    results: "Pass",
-    bug: "N/A",
-    comments: "N/A",
-  },
-  {
-    id: 2,
-    "test case name": "install",
-    results: "Fail",
-    bug: "Bug 33513",
-    comments: "always fail",
-  },
-  {
-    id: 3,
-    "test case name": "run",
-    results: "Fail",
-    bug: "N/A",
-    comments: "caused by install fail",
-  },
-  {
-    id: 4,
-    "test case name": "scan",
-    results: "Pass",
-    bug: "N/A",
-    comments: "caused by install fail",
-  }
-];
 
 export default {
   components: {
-    DetailsTable,
     BarChart,
     DataTable
   },
@@ -101,8 +48,6 @@ export default {
       page: 1,
       table1: {
         title: "Tasks from podman",
-        columns: [...tableColumns],
-        data: [...tableData]
       },
       blueBarChart: {
           extraOptions: chartConfigs.barChartOptions,

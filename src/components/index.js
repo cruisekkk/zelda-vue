@@ -11,6 +11,7 @@ import Modal from "./Modal";
 import CloseButton from "./CloseButton";
 import DetailsTable from "./DetailsTable.vue";
 import DataTable from "./DataTable.vue";
+import DashboardTable from "./DashboardTable.vue";
 
 import Card from "./Cards/Card.vue";
 import StatsCard from "./Cards/StatsCard.vue";
@@ -32,5 +33,6 @@ export {
   SidebarPlugin,
   BaseNav,
   DetailsTable,
-  DataTable
+  DataTable,
+  DashboardTable
 };

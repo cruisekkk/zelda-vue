@@ -61,7 +61,7 @@
         </card>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-12 col-md-12">
         <card class="card" :header-classes="{'text-right': isRTL}">
           <h4 slot="header" class="card-title">{{$t('dashboard.TestCasesInfo')}}</h4>
@@ -70,9 +70,17 @@
           </div>
         </card>
       </div>
-    </div>
+    </div> -->
     <div class="row">
+      <div class="col-12">
+        <card :title="$t('dashboard.TestCasesInfo')">
+          <div class="table-responsive">
+            <dashboard-table thead-classes="text-primary">
 
+            </dashboard-table>
+          </div>
+        </card>
+      </div>
     </div>
   </div>
 </template>
@@ -82,8 +90,8 @@
   import BarChart from '@/components/Charts/BarChart';
   import * as chartConfigs from '@/components/Charts/config';
   import TaskList from '../pages/Dashboard/TaskList';
-  import UserTable from '../pages/Dashboard/UserTable';
   import config from '@/config';
+  import {DashboardTable}  from "@/components";
 
   export default {
     components: {
@@ -91,7 +99,7 @@
       LineChart,
       BarChart,
       TaskList,
-      UserTable
+      DashboardTable
     },
     data() {
       return {
@@ -110,30 +118,6 @@
           gradientColors: config.colors.primaryGradient,
           gradientStops: [1, 0.4, 0],
           categories: []
-        },
-        purpleLineChart: {
-          extraOptions: chartConfigs.purpleChartOptions,
-          chartData: {
-            labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-            datasets: [{
-              label: "Data",
-              fill: true,
-              borderColor: config.colors.primary,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.primary,
-              pointBorderColor: 'rgba(255,255,255,0)',
-              pointHoverBackgroundColor: config.colors.primary,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [80, 100, 70, 80, 120, 80],
-            }]
-          },
-          gradientColors: config.colors.primaryGradient,
-          gradientStops: [1, 0.2, 0],
         },
         greenLineChart: {
           extraOptions: chartConfigs.greenChartOptions,
@@ -157,23 +141,6 @@
             }]
           },
           gradientColors: ['rgba(66,134,121,0.15)', 'rgba(66,134,121,0.0)', 'rgba(66,134,121,0)'],
-          gradientStops: [1, 0.4, 0],
-        },
-        blueBarChart: {
-          extraOptions: chartConfigs.barChartOptions,
-          chartData: {
-            labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
-            datasets: [{
-              label: "Countries",
-              fill: true,
-              borderColor: config.colors.info,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              data: [53, 20, 10, 80, 100, 45],
-            }]
-          },
-          gradientColors: config.colors.primaryGradient,
           gradientStops: [1, 0.4, 0],
         }
       }

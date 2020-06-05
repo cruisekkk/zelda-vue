@@ -1,0 +1,116 @@
+<template>
+  <v-data-table
+    :headers="headers"
+    :items="cases"
+    sort-by=""
+    class="mytable table tablesorter dark"
+    dark
+  >
+    <!-- <template v-slot:item.pass="{ item }">
+      <v-chip small class="pass" >{{ item.pass }}</v-chip>
+    </template>
+    <template v-slot:item.fail="{ item }">
+      <v-chip small class="fail" >{{ item.fail }}</v-chip>
+    </template>
+    <template v-slot:item.na="{ item }">
+      <v-chip small class="na" >{{ item.na }}</v-chip>
+    </template> -->
+
+    <template v-slot:item.detail="{ item }">
+      <v-icon
+      >
+        find_in_page
+      </v-icon>
+    </template>
+    <template v-slot:no-data>
+      <v-btn color="primary" @click="initialize">Reset</v-btn>
+    </template>
+    
+  </v-data-table>
+</template>
+
+<script>
+  export default {
+    name: 'dashboard-table',
+    data: () => ({
+      dialog: false,
+      headers: [
+        {
+          text: 'RUN NAME',
+          align: 'start',
+          sortable: false,
+          value: 'name',
+        },
+        { text: 'TOTAL', value: 'total' },
+        { text: 'PASS', value: 'pass' },
+        { text: 'FAIL', value: 'fail' },
+        { text: 'N/A', value: 'na' },
+        { text: 'DETAIL', value: 'detail', sortable: false },
+      ],
+      cases: [],
+    }),
+
+    created () {
+      this.initialize()
+    },
+
+    methods: {
+      initialize () {
+        this.cases = [
+   {
+    name: "rsyslog container",
+    total: 15,
+    pass: 12,
+    fail: 2,
+    na: 1,
+  },
+  {
+    name: "ubi7 containenr",
+    total: 22,
+    pass: 20,
+    fail: 1,
+    na: 1,
+  },
+  {
+    name: "podman rpm",
+    total: 899,
+    pass: 836,
+    fail: 33,
+    na: 30,
+  },
+  {
+    name: "buildah rpm",
+    total: 48,
+    pass: 42,
+    fail: 5,
+    na: 1,
+  }
+  ]
+  },
+      getColor (result) {
+        if (result == 'Fail') return 'red'
+        else if (result == 'N/A') return 'orange'
+        else return 'green'
+      },
+    },
+  }
+</script>
+
+<style scoped>
+.mytable {
+    background-color: transparent;
+    border-bottom: none;
+}
+.v-chip.pass {
+  background: #3cd1c2 !important;
+}
+.v-chip.na {
+  background: #ffaa2c !important;
+}
+.v-chip.fail {
+  background: #f83e70 !important;
+}
+.v-icon {
+    color: #7af0e4;
+}
+</style>

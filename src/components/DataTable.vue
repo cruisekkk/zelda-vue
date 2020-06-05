@@ -52,13 +52,14 @@
     <template v-slot:item.actions="{ item }">
       <v-icon
         small
-        class="mr-2"
+        class="mr-2 edit"
         @click="editItem(item)"
       >
         mdi-pencil
       </v-icon>
       <v-icon
         small
+        class="delete"
         @click="deleteItem(item)"
       >
         mdi-delete
@@ -83,10 +84,10 @@
           sortable: false,
           value: 'name',
         },
-        { text: 'RESULTS', value: 'result' },
+        { text: 'RESULT', value: 'result' },
         { text: 'BUG', value: 'bug' },
-        { text: 'COMMENTS', value: 'comment' },
-        { text: 'Actions', value: 'actions', sortable: false },
+        { text: 'COMMENT', value: 'comment' },
+        { text: 'ACTION', value: 'actions', sortable: false },
       ],
       cases: [],
       editedIndex: -1,
@@ -103,12 +104,6 @@
         comment: '',
       },
     }),
-
-    // computed: {
-    //   formTitle () {
-    //     return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-    //   },
-    // },
 
     watch: {
       dialog (val) {
@@ -200,5 +195,11 @@
 }
 .v-chip.Fail {
   background: #f83e70 !important;
+}
+.v-icon.edit {
+  /* color: #89f0e5; */
+}
+.v-icon.delete {
+  color: #f82b62;
 }
 </style>
