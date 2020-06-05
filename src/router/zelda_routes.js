@@ -20,6 +20,8 @@ const Maps = () => import(/* webpackChunkName: "common" */ "@/pages/Maps.vue");
 const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typography.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
 const TestDetails = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/TestDetails.vue");
+const Calendar = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/Calendar.vue");
+
 const routes = [
   {
     path: "/",
@@ -37,19 +39,14 @@ const routes = [
         component: Profile
       },
       {
-        path: "notifications",
-        name: "notifications",
-        component: Notifications
-      },
-      {
         path: "icons",
         name: "icons",
         component: Icons
       },
       {
-        path: "maps",
-        name: "maps",
-        component: Maps
+        path: "calendar",
+        name: "calendar",
+        component: Calendar
       },
       {
         path: "typography",
@@ -60,7 +57,7 @@ const routes = [
         path: "test-details",
         name: "test-details",
         component: TestDetails
-      }
+      },
     ]
   },
   { path: "*", component: NotFound },
