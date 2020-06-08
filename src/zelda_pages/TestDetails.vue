@@ -47,7 +47,7 @@ export default {
     return {
       page: 1,
       table1: {
-        title: "Tasks from podman",
+        title: "Test Cases from podman",
       },
       blueBarChart: {
           extraOptions: chartConfigs.barChartOptions,

@@ -3,8 +3,8 @@
     "completedTasks": "Completed Tasks",
     "testCases": "Test Cases",
     "performance": "Performance rate",
-    "TestCasesInfo": "Test Cases Info",
-    "totalTests": "Total tests",
+    "TestCasesInfo": "Runs Info",
+    "totalTests": "Total runs",
     "resultCategories": [
       "Pass ",
       "Fail ",

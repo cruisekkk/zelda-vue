@@ -17,7 +17,7 @@
                      data-toggle="buttons">
                   <label
                          class="btn btn-sm btn-primary btn-simple"
-                         > Container: &nbsp;&nbsp;
+                         > Product: &nbsp;&nbsp;
                     <select v-model="selected" >
                   <!-- <option disable value="">Container</option> -->
                   <option>rsyslog container</option>

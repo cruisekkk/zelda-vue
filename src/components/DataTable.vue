@@ -79,7 +79,7 @@
       dialog: false,
       headers: [
         {
-          text: 'TASK NAME',
+          text: 'TEST CASE NAME',
           align: 'start',
           sortable: false,
           value: 'name',
