@@ -2,7 +2,7 @@
 
     <div class="row">
       <div class="col-lg-4">
-        <card>
+        <card class = "above">
           <div class="table-responsive">
             <meta-data-table thead-classes="text-primary">
             </meta-data-table>
@@ -10,7 +10,7 @@
         </card>
       </div>
       <div class="col-lg-8" :class="{'text-right': isRTL}">
-        <card type="chart">
+        <card type="chart" class = "above">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
             <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> Run name: podman</h3>
@@ -80,4 +80,7 @@ export default {
 };
 </script>
 <style>
+.above {
+  height: 355px;
+}
 </style>
