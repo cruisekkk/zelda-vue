@@ -12,6 +12,7 @@ import CloseButton from "./CloseButton";
 import DetailsTable from "./DetailsTable.vue";
 import DataTable from "./DataTable.vue";
 import DashboardTable from "./DashboardTable.vue";
+import MetaDataTable from "./MetaDataTable"
 
 import Card from "./Cards/Card.vue";
 import StatsCard from "./Cards/StatsCard.vue";
@@ -34,5 +35,6 @@ export {
   BaseNav,
   DetailsTable,
   DataTable,
-  DashboardTable
+  DashboardTable,
+  MetaDataTable
 };

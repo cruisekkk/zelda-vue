@@ -1,13 +1,21 @@
 <template>
 
     <div class="row">
-      <div class="col-lg-12" :class="{'text-right': isRTL}">
+      <div class="col-lg-4">
+        <card>
+          <div class="table-responsive">
+            <meta-data-table thead-classes="text-primary">
+            </meta-data-table>
+          </div>
+        </card>
+      </div>
+      <div class="col-lg-8" :class="{'text-right': isRTL}">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
             <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> Run name: podman</h3>
           </template>
-          <div class="chart-area">
+          <div class="chart-area" >
             <bar-chart style="height: 100%"
                        chart-id="blue-bar-chart"
                        :chart-data="blueBarChart.chartData"
@@ -37,11 +45,12 @@ import TaskList from '../pages/Dashboard/TaskList';
 import UserTable from '../pages/Dashboard/UserTable';
 import config from '@/config';
 import {DataTable}  from "@/components";
-
+import {MetaDataTable}  from "@/components";
 export default {
   components: {
     BarChart,
-    DataTable
+    DataTable,
+    MetaDataTable
   },
   data() {
     return {
