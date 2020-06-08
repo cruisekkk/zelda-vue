@@ -16,11 +16,13 @@
       <v-chip small class="na" >{{ item.na }}</v-chip>
     </template> -->
 
-    <template v-slot:item.detail="{ item }">
-      <v-icon
-      >
+    <template v-slot:item.detail="{ item }" >
+      <router-link :to="{path:'/test-details'}" >
+      <v-icon >
         find_in_page
       </v-icon>
+      </router-link>
+      
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="initialize">Reset</v-btn>

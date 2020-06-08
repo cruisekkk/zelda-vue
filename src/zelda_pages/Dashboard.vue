@@ -7,7 +7,7 @@
           <template slot="header">
             <div class="row">
               <div class="col-sm-7" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category">{{$t('dashboard.totalTests')}}</h5>
+                <h5 class="card-category">{{$t('dashboard.totalRuns')}}</h5>
                 <h2 class="card-title">{{$t('dashboard.performance')}}</h2>
               </div>
               <div class="col-sm-2">
@@ -73,7 +73,7 @@
     </div> -->
     <div class="row">
       <div class="col-12">
-        <card :title="$t('dashboard.TestCasesInfo')">
+        <card :title="$t('dashboard.RunsInfo')">
           <div class="table-responsive">
             <dashboard-table thead-classes="text-primary">
 
