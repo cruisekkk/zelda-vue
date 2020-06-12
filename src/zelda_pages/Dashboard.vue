@@ -61,16 +61,6 @@
         </card>
       </div>
     </div>
-    <!-- <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <card class="card" :header-classes="{'text-right': isRTL}">
-          <h4 slot="header" class="card-title">{{$t('dashboard.TestCasesInfo')}}</h4>
-          <div class="table-responsive">
-            <user-table></user-table>
-          </div>
-        </card>
-      </div>
-    </div> -->
     <div class="row">
       <div class="col-12">
         <card :title="$t('dashboard.RunsInfo')">
@@ -185,18 +175,19 @@
       }
     },
     mounted() {
-      this.i18n = this.$i18n;
-      if (this.enableRTL) {
-        this.i18n.locale = 'ar';
-        this.$rtl.enableRTL();
-      }
+      // not used yet
+      // this.i18n = this.$i18n;
+      // if (this.enableRTL) {
+      //   this.i18n.locale = 'ar';
+      //   this.$rtl.enableRTL();
+      // }
       this.initBigChart(0);
     },
     beforeDestroy() {
-      if (this.$rtl.isRTL) {
-        this.i18n.locale = 'en';
-        this.$rtl.disableRTL();
-      }
+      // if (this.$rtl.isRTL) {
+      //   this.i18n.locale = 'en';
+      //   this.$rtl.disableRTL();
+      // }
     }
   };
 </script>

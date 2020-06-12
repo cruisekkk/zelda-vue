@@ -41,11 +41,11 @@
           text: 'RUN NAME',
           align: 'start',
           sortable: false,
-          value: 'name',
+          value: 'userId', // name
         },
-        { text: 'PRODUCT NAME', value: 'product'},
-        { text: 'TOTAL', value: 'total' },
-        { text: 'PASS', value: 'pass' },
+        { text: 'PRODUCT NAME', value: 'id'}, // product
+        { text: 'TOTAL', value: 'title' }, // total
+        { text: 'PASS', value: 'completed' }, // pass
         { text: 'FAIL', value: 'fail' },
         { text: 'N/A', value: 'na' },
         { text: 'DETAIL', value: 'detail', sortable: false },
@@ -57,42 +57,57 @@
       this.initialize()
     },
 
+    mounted () {
+            axios
+      .get('https://jsonplaceholder.typicode.com/users/1/todos')
+      .then(response => (this.info = response.data.sites))
+      .catch(function (error) { // 请求失败处理
+        console.log(error);
+      });
+    },
+
     methods: {
       initialize () {
-        this.cases = [
-   {
-    name: "RUN321", 
-    product: "rsyslog container",
-    total: 15,
-    pass: 12,
-    fail: 2,
-    na: 1,
-  },
-  {
-    name: "RUN335",
-    product: "ubi7 containenr",
-    total: 22,
-    pass: 20,
-    fail: 1,
-    na: 1,
-  },
-  {
-    name: "RUN375",
-    product: "podman rpm",
-    total: 899,
-    pass: 836,
-    fail: 33,
-    na: 30,
-  },
-  {
-    name: "RUN423",
-    product: "buildah rpm",
-    total: 48,
-    pass: 42,
-    fail: 5,
-    na: 1,
-  }
-  ]
+  //       this.cases = [
+  //  {
+  //   name: "RUN321", 
+  //   product: "rsyslog container",
+  //   total: 15,
+  //   pass: 12,
+  //   fail: 2,
+  //   na: 1,
+  // },
+  // {
+  //   name: "RUN335",
+  //   product: "ubi7 containenr",
+  //   total: 22,
+  //   pass: 20,
+  //   fail: 1,
+  //   na: 1,
+  // },
+  // {
+  //   name: "RUN375",
+  //   product: "podman rpm",
+  //   total: 899,
+  //   pass: 836,
+  //   fail: 33,
+  //   na: 30,
+  // },
+  // {
+  //   name: "RUN423",
+  //   product: "buildah rpm",
+  //   total: 48,
+  //   pass: 42,
+  //   fail: 5,
+  //   na: 1,
+  // }
+  // ]
+      axios
+      .get('https://jsonplaceholder.typicode.com/users/1/todos')
+      .then(response => (this.cases = response.data))
+      .catch(function (error) { // 请求失败处理
+        console.log(error);
+      });
   },
       getColor (result) {
         if (result == 'Fail') return 'red'

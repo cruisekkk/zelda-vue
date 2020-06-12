@@ -79,11 +79,11 @@
           text: 'TEST CASE NAME',
           align: 'start',
           sortable: false,
-          value: 'name',
+          value: 'userId', // name
         },
-        { text: 'RESULT', value: 'result' },
-        { text: 'BUG', value: 'bug' },
-        { text: 'COMMENT', value: 'comment' },
+        { text: 'RESULT', value: 'id' }, // result
+        { text: 'BUG', value: 'title' }, // bug
+        { text: 'COMMENT', value: 'completed' }, // comment
         { text: 'ACTION', value: 'actions', sortable: false },
       ],
       cases: [],
@@ -114,32 +114,40 @@
 
     methods: {
       initialize () {
-        this.cases = [
-   {
-    name: "check signature",
-    result: "Pass",
-    bug: "N/A",
-    comment: "N/A",
-  },
-  {
-    name: "install",
-    result: "Fail",
-    bug: "Bug 33513",
-    comment: "always fail",
-  },
-  {
-    name: "run",
-    result: "Fail",
-    bug: "N/A",
-    comment: "caused by install fail",
-  },
-  {
-    name: "scan",
-    result: "Pass",
-    bug: "N/A",
-    comment: "caused by install fail",
-  }
-  ]
+
+        axios
+      .get('https://jsonplaceholder.typicode.com/users/1/todos')
+      .then(response => (this.cases = response.data))
+      .catch(function (error) { // 请求失败处理
+        console.log(error);
+      });
+
+  //       this.cases = [
+  //  {
+  //   name: "check signature",
+  //   result: "Pass",
+  //   bug: "N/A",
+  //   comment: "N/A",
+  // },
+  // {
+  //   name: "install",
+  //   result: "Fail",
+  //   bug: "Bug 33513",
+  //   comment: "always fail",
+  // },
+  // {
+  //   name: "run",
+  //   result: "Fail",
+  //   bug: "N/A",
+  //   comment: "caused by install fail",
+  // },
+  // {
+  //   name: "scan",
+  //   result: "Pass",
+  //   bug: "N/A",
+  //   comment: "caused by install fail",
+  // }
+  // ]
   },
 
       editItem (item) {
