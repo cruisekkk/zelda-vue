@@ -22,16 +22,16 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.name" label="Test case name"></v-text-field>
+                    <v-text-field v-model="editedItem.userId" label="Test case name"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.result" label="Result"></v-text-field>
+                    <v-text-field v-model="editedItem.id" label="Result"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.bug" label="Bug"></v-text-field>
+                    <v-text-field v-model="editedItem.title" label="Bug"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.comment" label="Comment"></v-text-field>
+                    <v-text-field v-model="editedItem.completed" label="Comment"></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
@@ -89,16 +89,16 @@
       cases: [],
       editedIndex: -1,
       editedItem: {
-        name: '',
-        result: '',
-        bug: '',
-        comment: '',
+        userId: '',
+        id: '',
+        title: '',
+        completed: '',
       },
       defaultItem: {
-        name: '',
-        result: '',
-        bug: '',
-        comment: '',
+        userId: '',
+        id: '',
+        title: '',
+        completed: '',
       },
     }),
 
@@ -109,18 +109,20 @@
     },
 
     created () {
-      this.initialize()
+      //this.initialize()
     },
 
-    methods: {
-      initialize () {
-
+    mounted () {
         axios
       .get('https://jsonplaceholder.typicode.com/users/1/todos')
       .then(response => (this.cases = response.data))
       .catch(function (error) { // 请求失败处理
         console.log(error);
       });
+    },
+
+    methods: {
+      initialize () {
 
   //       this.cases = [
   //  {
@@ -175,7 +177,16 @@
         } else {
           this.cases.push(this.editedItem)
         }
-        this.close()
+        this.close();
+        axios.post('https://jsonplaceholder.typicode.com/users/1/todos', {
+        editedItem
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       },
 
       getColor (result) {
