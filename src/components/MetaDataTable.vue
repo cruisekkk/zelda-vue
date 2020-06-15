@@ -8,9 +8,6 @@
     dark
     height="320px"
   >
-    <template v-slot:item.result="{ item }">
-      <v-chip :class="`${item.result}`" >{{ item.result }}</v-chip>
-    </template>
 
     <template v-slot:top>
         <div data-app>
@@ -69,7 +66,7 @@
           { text: 'value', value: 'value' },
           { text: 'action', value: 'action'},
         ],
-      cases: [],
+      attributes: [],
       editedIndex: -1,
       editedItem: {
         attribute: '',
@@ -127,8 +124,12 @@
   },
 
       editItem (item) {
-        this.editedIndex = this.cases.indexOf(item)
+        // console.log(item)
+        // console.log(this.editedIndex)
+        this.editedIndex = this.attributes.indexOf(item)
+        // console.log(this.editedIndex)
         this.editedItem = Object.assign({}, item)
+        console.log(`${this.editedItem.attribute}`)
         this.dialog = true
       },
 
@@ -142,9 +143,22 @@
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.cases[this.editedIndex], this.editedItem)
+          Object.assign(this.attributes[this.editedIndex], this.editedItem)
+          // console.log(this.editedIndex)
+          // console.log("editedIndex correct")
+          //  axios.put('/runs/' + run_id, {
+          //   "`${editedItem.attribute}`" : this.editedItem.value,
+          // })
+          // .then(function (response) {
+          //   console.log(response);
+          // })
+          // .catch(function (error) {
+          //   console.log(error);
+          // });
         } else {
-          this.cases.push(this.editedItem)
+          this.attributes.push(this.editedItem)
+          console.log(this.editedIndex)
+          console.log("editedIndex failure")
         }
         this.close()
       },

@@ -54,6 +54,7 @@ export default {
   },
   data() {
     return {
+      array: [],
       page: 1,
       table1: {
         title: "Test Cases from podman",
@@ -69,14 +70,30 @@ export default {
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              data: [55, 20, 5],
+              //data: [this.pass, this.fail, this.na]
+              data: [],
             }]
           },
           gradientColors: config.colors.primaryGradient,
           gradientStops: [1, 0.4, 0],
-        }
+        }, 
     };
+  }, 
+  created(){
+      this.initialize ()
+  },
+  methods:{
+      initialize () {
+        this.array = [55,20,5];
+        console.log(this.blueBarChart.chartData.datasets[0].data);
+        console.log(this.array);
+        console.log(this.blueBarChart.gradientStops);
+        this.blueBarChart.chartData.datasets[0].data = this.array;
+      },
+
+      
   }
+
 };
 </script>
 <style>

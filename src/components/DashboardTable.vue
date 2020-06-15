@@ -17,8 +17,9 @@
     </template> -->
 
     <template v-slot:item.detail="{ item }" >
-      <router-link :to="{path:'/test-details'}" >
-      <v-icon >
+      <!-- <router-link :to="{path:'/test-details'}" > -->
+      <router-link :to="{path:'/runs/'+ item.userId}" >
+      <v-icon>
         find_in_page
       </v-icon>
       </router-link>
@@ -104,7 +105,7 @@
   // ]
       axios
       .get('https://jsonplaceholder.typicode.com/users/1/todos')
-      .then(response => (this.cases = response.data))
+      .then(response => (this.cases = response.data, console.log(response.data)))
       .catch(function (error) { // 请求失败处理
         console.log(error);
       });
