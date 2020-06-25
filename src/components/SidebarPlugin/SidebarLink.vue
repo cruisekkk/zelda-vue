@@ -4,10 +4,10 @@
              class="nav-item"
              v-bind="$attrs"
              tag="li">
-    <a class="nav-link">
+    <a class="nav-link"> 
       <slot>
         <i v-if="icon" :class="icon"></i>
-        <p>{{name}}</p>
+        <p><span v-if='name == "podman" || name=="docker"' class="product"></span>{{name}}</p>
       </slot>
     </a>
   </component>
@@ -61,4 +61,7 @@ export default {
 };
 </script>
 <style>
+span {
+    margin-left: 32px;
+}
 </style>
