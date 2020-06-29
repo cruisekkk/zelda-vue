@@ -15,16 +15,7 @@
                 <div class="btn-group btn-group-toggle"
                      :class="isRTL ? 'float-left' : 'float-right'"
                      data-toggle="buttons">
-                  <label
-                         class="btn btn-sm btn-primary btn-simple"
-                         > Product: &nbsp;&nbsp;
-                    <select v-model="selected" >
-                  <!-- <option disable value="">Container</option> -->
-                  <option>rsyslog container</option>
-                  <option>podman rpm</option>
-                  <option>ubi7 container</option>
-                </select>
-                  </label>
+                  
                 </div>
                 <!-- <span>Selected: {{ selected }}</span> -->
               </div>

@@ -99,10 +99,10 @@
       }
     ]
   },
-  "sidebar": {
+  "sidebar": { 
     "title": "Zelda",
     "shortTitle": "Z",
-    "dashboard": "dashboard",
+    "testRuns": "Test Runs",
     "notifications": "Notifications",
     "userProfile": "User Profile",
     "testDetails": "Test Details",

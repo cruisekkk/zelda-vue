@@ -3,7 +3,7 @@
     <fade-transition :duration="100" mode="out-in">
       <!-- your content here -->
       <router-view></router-view>
-    </fade-transition>
+    </fade-transition> 
   </div>
 </template>
 <script>

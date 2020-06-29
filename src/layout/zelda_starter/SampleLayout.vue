@@ -1,12 +1,12 @@
 <template> 
   <div class="wrapper">
-    <side-bar>
+    <side-bar> 
       <template slot="links">
         <div @click="subitem=!subitem">
-        <sidebar-link to="/dashboard" :name="$t('sidebar.dashboard')" icon="tim-icons icon-chart-pie-36"/>
+        <sidebar-link to="/testRuns" :name="$t('sidebar.testRuns')" icon="tim-icons icon-chart-pie-36"/>
         </div>
         <div v-if="subitem==true">
-        <sidebar-link v-for="product in products" :key="product" to="/profile" :name="product" />
+        <sidebar-link v-for="product in products" :key="product" :to= "'/testRuns/' + product" :name="product" />
         </div>
         <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/>
         <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/>
@@ -20,7 +20,7 @@
 
       </dashboard-content>
 
-      <content-footer></content-footer>
+      <content-footer></content-footer> 
     </div>
   </div>
 </template>

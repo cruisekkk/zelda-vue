@@ -24,13 +24,18 @@ const Calendar = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/Ca
 
 const routes = [
   {
-    path: "/",
+    path: "/", 
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/testRuns",
     children: [
       {
-        path: "dashboard",
-        name: "dashboard",
+        path: "testRuns",
+        name: "testRuns",
+        component: Dashboard
+      },
+      {
+        path: "testRuns/:product",
+        name: "testRuns",
         component: Dashboard
       },
       {
