@@ -17,8 +17,8 @@
     </template> -->
 
     <template v-slot:item.detail="{ item }" >
-      <!-- <router-link :to="{path:'/test-details'}" > -->
-      <router-link :to="{path:'/runs/'+ item.userId}" >
+      <router-link :to="{path:'/test-details'}" >
+      <!-- <router-link :to="{path:'/runs/'+ item.userId}" > -->
       <v-icon>
         find_in_page
       </v-icon>

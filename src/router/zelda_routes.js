@@ -21,6 +21,7 @@ const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typogr
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
 const TestDetails = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/TestDetails.vue");
 const Calendar = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/Calendar.vue");
+const HomePage = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/HomePage.vue");
 
 const routes = [
   {
@@ -31,7 +32,7 @@ const routes = [
       {
         path: "testRuns",
         name: "testRuns",
-        component: Dashboard
+        component: HomePage
       },
       {
         path: "testRuns/:product",
