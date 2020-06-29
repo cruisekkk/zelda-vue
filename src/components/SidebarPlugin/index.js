@@ -2,11 +2,12 @@ import Sidebar from "./SideBar.vue";
 import SidebarLink from "./SidebarLink";
 
 const SidebarStore = {
+  showSub: false,
   showSidebar: false,
   sidebarLinks: [],
   displaySidebar(value) {
     this.showSidebar = value;
-  }
+  } 
 };
 
 const SidebarPlugin = {

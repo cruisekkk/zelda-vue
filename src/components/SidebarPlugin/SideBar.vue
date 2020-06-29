@@ -69,7 +69,7 @@
       sidebarLinks: {
         type: Array,
         default: () => []
-      },
+      }, 
       autoClose: {
         type: Boolean,
         default: true

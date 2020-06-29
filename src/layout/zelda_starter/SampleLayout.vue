@@ -2,10 +2,10 @@
   <div class="wrapper">
     <side-bar> 
       <template slot="links">
-        <div @click="subitem=!subitem">
+        <div @click="toggleSub">
         <sidebar-link to="/testRuns" :name="$t('sidebar.testRuns')" icon="tim-icons icon-chart-pie-36"/>
         </div>
-        <div v-if="subitem==true">
+        <div v-if="this.$sidebar.showSub==true">
         <sidebar-link v-for="product in products" :key="product" :to= "'/testRuns/' + product" :name="product" />
         </div>
         <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/>
@@ -41,7 +41,6 @@
     data() {
       return {
         products: ["podman", "docker"],
-        subitem: false
       }
       
     },
@@ -51,6 +50,10 @@
           this.$sidebar.displaySidebar(false);
         }
       },
+      toggleSub() {
+         this.$sidebar.showSub=!this.$sidebar.showSub;
+         console.log(this.$sidebar.showSub);
+      }
     }
   };
 </script>

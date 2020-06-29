@@ -1,10 +1,11 @@
 <template>
+<!-- <@click.native="hideSidebar"> -->
   <component :is="tag"
-             @click.native="hideSidebar"
              class="nav-item"
              v-bind="$attrs"
              tag="li">
-    <a class="nav-link"> 
+             
+    <a class="nav-link left"> 
       <slot>
         <i v-if="icon" :class="icon"></i>
         <p><span v-if='name == "podman" || name=="docker"' class="product"></span>{{name}}</p>
@@ -39,7 +40,7 @@ export default {
     hideSidebar() {
       if (this.autoClose) {
         this.$sidebar.displaySidebar(false);
-      }
+      } 
     },
     isActive() {
       return this.$el.classList.contains("active");
@@ -64,4 +65,9 @@ export default {
 span {
     margin-left: 32px;
 }
+#left {
+    padding-left: 200px;
+}
+
 </style>
+
