@@ -1,6 +1,6 @@
 <template>
   <v-data-table
-    :headers="headers"
+    :headers="headers" 
     :items="cases"
     sort-by=""
     class="mytable table tablesorter dark"
@@ -52,6 +52,7 @@
         { text: 'DETAIL', value: 'detail', sortable: false },
       ],
       cases: [],
+      product: 'a',
     }),
 
     created () {
@@ -59,12 +60,6 @@
     },
 
     mounted () {
-            axios
-      .get('https://jsonplaceholder.typicode.com/users/1/todos')
-      .then(response => (this.info = response.data.sites))
-      .catch(function (error) { // 请求失败处理
-        console.log(error);
-      });
     },
 
     methods: {
@@ -103,12 +98,28 @@
   //   na: 1,
   // }
   // ]
+      this.product = this.$route.params.product;
+      var p = this.product;
       axios
       .get('https://jsonplaceholder.typicode.com/users/1/todos')
-      .then(response => (this.cases = response.data, console.log(response.data)))
+      .then(response => (this.cases = response.data, 
+      this.cases = this.cases.filter(function (elem) {
+        console.log(p);
+        if (p == 'docker'){
+          return (
+            elem.completed.toString() == 'false'
+            );
+        }
+        else {
+          return (elem.completed.toString() == 'true')
+        }
+      },
+      console.log(this.cases),
+      ))
       .catch(function (error) { // 请求失败处理
         console.log(error);
-      });
+      }));
+      //console.log(this.$route.params.product);
   },
       getColor (result) {
         if (result == 'Fail') return 'red'
