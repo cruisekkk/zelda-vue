@@ -40,7 +40,51 @@
     },
     data() {
       return {
-        products: ["podman", "docker"],
+        products: [],
+        fake_api: [
+          {
+            run_name: 'RUN101',
+            product: 'podman',
+            pass_count: 3,
+            fail_count: 4,
+            na_count: 1,
+          },
+          {
+            run_name: 'RUN102',
+            product: 'podman',
+            pass_count: 2,
+            fail_count: 3,
+            na_count: 0,
+          },
+          {
+            run_name: 'RUN103',
+            product: 'docker',
+            pass_count: 2,
+            fail_count: 3,
+            na_count: 0,
+          },
+          {
+            run_name: 'RUN104',
+            product: 'podman',
+            pass_count: 7,
+            fail_count: 2,
+            na_count: 4,
+          },
+          {
+            run_name: 'RUN105',
+            product: 'docker',
+            pass_count: 10,
+            fail_count: 7,
+            na_count: 3,
+          },
+          {
+            run_name: 'RUN106',
+            product: 'rhel7',
+            pass_count: 5,
+            fail_count: 5,
+            na_count: 3,
+          }
+        ]
       }
       
     },
@@ -53,7 +97,22 @@
       toggleSub() {
          this.$sidebar.showSub=!this.$sidebar.showSub;
          console.log(this.$sidebar.showSub);
+      },
+      initProducts() {
+          var api = this.fake_api;
+          var hash=[];
+          for (var i = 0; i < api.length; i++) {
+              if(hash.indexOf(api[i].product)==-1){
+                hash.push(api[i].product);
+              }
+          }
+          this.products = hash;
       }
+    },
+    created() {
+      this.initProducts();
+      this.$sidebar.products = this.products;
+      this.$sidebar.api = this.fake_api;
     }
   };
 </script>

@@ -65,7 +65,7 @@
           ];
           return acceptedValues.indexOf(value) !== -1;
         }
-      },
+      }, 
       sidebarLinks: {
         type: Array,
         default: () => []

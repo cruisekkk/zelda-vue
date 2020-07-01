@@ -8,7 +8,7 @@
     <a class="nav-link left"> 
       <slot>
         <i v-if="icon" :class="icon"></i>
-        <p><span v-if='name == "podman" || name=="docker"' class="product"></span>{{name}}</p>
+        <p @click = "c"><span v-if='this.$sidebar.products.includes(name)' class="product"></span>{{name}}</p>
       </slot>
     </a>
   </component>
@@ -26,7 +26,7 @@ export default {
     },
     removeLink: {
       default: ()=>{}
-    }
+    },
   },
   props: {
     name: String,
@@ -44,13 +44,20 @@ export default {
     },
     isActive() {
       return this.$el.classList.contains("active");
+    },
+    c(){// for test
+      // console.log(this.$sidebar.products);
+      // console.log("a");
+      // console.log(Object.getPrototypeOf(this.$sidebar.products));
+      // console.log(this.$sidebar.products.includes("podman"));
     }
+
   },
   mounted() {
     if (this.addLink) {
       this.addLink(this);
     }
-  },
+  }, 
   beforeDestroy() {
     if (this.$el && this.$el.parentNode) {
       this.$el.parentNode.removeChild(this.$el)

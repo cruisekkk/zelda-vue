@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click = "c">
     
     <div class="row">
       <div class="col-12">
@@ -54,7 +54,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <card :title="$t('dashboard.RunsInfo')">
+        <card :title="$t('dashboard.RunsInfo')"> 
           <div class="table-responsive">
             <dashboard-table thead-classes="text-primary">
 
@@ -84,6 +84,8 @@
     },
     data() {
       return {
+        labels: [],
+        api: this.$sidebar.api,
         el: '#example-5',
         selected: ["container"
         ],
@@ -140,7 +142,21 @@
         return this.$t('dashboard.resultCategories');
       }
     },
+    created(){
+        var api = this.api;
+        var labels=[];
+          for (var i = 0; i < api.length; i++) {
+              if(api[i]['product'] == this.$route.params.product){
+                labels.push(api[i]['run_name']);
+              }
+          }
+        this.labels = labels;
+      },
     methods: {
+      
+      c(){
+        console.log(this.api);
+      },
       initBigChart(index) {
         let chartData = {
           datasets: [{
@@ -158,7 +174,8 @@
             pointRadius: 4,
             data: this.bigLineChart.allData[index]
           }],
-          labels: ['RUN321', 'RUN335', 'RUN375', 'RUN423', 'RUN445', 'RUN449'],
+          labels: this.labels,
+          //['RUN321', 'RUN335', 'RUN375', 'RUN423', 'RUN445', 'RUN449'],
         }
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
