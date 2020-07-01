@@ -60,7 +60,7 @@ const routes = [
         component: Typography
       },
       {
-        path: "test-details",
+        path: "test-details/:run_name",
         name: "test-details",
         component: TestDetails
       },

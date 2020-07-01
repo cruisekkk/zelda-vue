@@ -17,9 +17,9 @@
     </template> -->
 
     <template v-slot:item.detail="{ item }" >
-      <router-link :to="{path:'/test-details'}" >
+      <router-link :to="{path:'/test-details/' + item.name}">
       <!-- <router-link :to="{path:'/runs/'+ item.userId}" > -->
-      <v-icon>
+      <v-icon @click = "c(item)">
         find_in_page
       </v-icon>
       </router-link>
@@ -63,6 +63,12 @@
     },
 
     methods: {
+      c(item) {
+          console.log("a");
+          console.log(item);
+          console.log("b");
+          console.log(this.api);
+      },
       initialize () {
       this.product = this.$route.params.product;
       this.api = this.$sidebar.api;
