@@ -36,23 +36,23 @@
   export default {
     name: 'dashboard-table',
     data: () => ({
+      api: [],
       dialog: false,
       headers: [
         {
           text: 'RUN NAME',
           align: 'start',
           sortable: false,
-          value: 'userId', // name
+          value: 'name', // name
         },
-        { text: 'PRODUCT NAME', value: 'id'}, // product
-        { text: 'TOTAL', value: 'title' }, // total
-        { text: 'PASS', value: 'completed' }, // pass
+        { text: 'TOTAL', value: 'total' }, // total
+        { text: 'PASS', value: 'pass' }, // pass
         { text: 'FAIL', value: 'fail' },
         { text: 'N/A', value: 'na' },
         { text: 'DETAIL', value: 'detail', sortable: false },
       ],
       cases: [],
-      product: 'a',
+      product: '',
     }),
 
     created () {
@@ -64,61 +64,52 @@
 
     methods: {
       initialize () {
-  //       this.cases = [
-  //  {
-  //   name: "RUN321", 
-  //   product: "rsyslog container",
-  //   total: 15,
-  //   pass: 12,
-  //   fail: 2,
-  //   na: 1,
-  // },
-  // {
-  //   name: "RUN335",
-  //   product: "ubi7 containenr",
-  //   total: 22,
-  //   pass: 20,
-  //   fail: 1,
-  //   na: 1,
-  // },
-  // {
-  //   name: "RUN375",
-  //   product: "podman rpm",
-  //   total: 899,
-  //   pass: 836,
-  //   fail: 33,
-  //   na: 30,
-  // },
-  // {
-  //   name: "RUN423",
-  //   product: "buildah rpm",
-  //   total: 48,
-  //   pass: 42,
-  //   fail: 5,
-  //   na: 1,
-  // }
-  // ]
       this.product = this.$route.params.product;
-      var p = this.product;
-      axios
-      .get('https://jsonplaceholder.typicode.com/users/1/todos')
-      .then(response => (this.cases = response.data, 
-      this.cases = this.cases.filter(function (elem) {
-        console.log(p);
-        if (p == 'docker'){
-          return (
-            elem.completed.toString() == 'false'
-            );
+      this.api = this.$sidebar.api;
+      var api = this.api;
+      var pro_name = this.product;
+      var case_array = [];
+      for (let i = 0; i < api.length; i++){
+        if (api[i]['product'] == pro_name){
+          let a = {};
+          a['name'] = api[i]['run_name'];
+          a['pass'] = api[i]['pass_count'];
+          a['fail'] = api[i]['fail_count'];
+          a['na'] = api[i]['na_count'];
+          a['total'] = a['pass'] + a['fail'] + a['na'];
+          case_array.push(a);
         }
-        else {
-          return (elem.completed.toString() == 'true')
-        }
-      },
-      console.log(this.cases),
-      ))
-      .catch(function (error) { // 请求失败处理
-        console.log(error);
-      }));
+      }
+      console.log(case_array);
+      this.cases = case_array;
+
+
+
+
+
+      //var p = this.product;
+
+      // reference for real restful api
+      // axios
+      // .get('https://jsonplaceholder.typicode.com/users/1/todos')
+      // .then(response => (this.cases = response.data, 
+      // this.cases = this.cases.filter(function (elem) {
+      //   console.log(p);
+      //   if (p == 'docker'){
+      //     return (
+      //       elem.completed.toString() == 'false'
+      //       );
+      //   }
+      //   else {
+      //     return (elem.completed.toString() == 'true')
+      //   }
+      // },
+      // console.log(this.cases),
+      // ))
+      // .catch(function (error) { // 请求失败处理
+      //   console.log(error);
+      // }));
+
       //console.log(this.$route.params.product);
   },
       getColor (result) {
