@@ -144,7 +144,7 @@
       }
     },
     created(){
-      this.initInfo();
+      //this.initInfo();
     },
     methods: {
       initInfo(){
@@ -156,15 +156,17 @@
             //console.log(response.data),
             this.tableInfo.forEach( element => {
               this.labels.push(element.run_name);
-            }),
-            console.log(this.labels)
+            })
           )).catch(function (error) { // 请求失败处理
             console.log(error);
           });
       },
       
       c(){
-        console.log(this.api);
+        console.log(this.labels);
+        console.log(typeof this.labels);
+        console.log(this.labels[0]);
+        console.log(typeof this.labels[0]);
       },
       initBigChart(index) {
         let chartData = {
@@ -183,7 +185,7 @@
             pointRadius: 4,
             data: this.bigLineChart.allData[index]
           }],
-          labels: this.labels,
+          labels: this.labels
         }
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
@@ -191,6 +193,7 @@
       }
     },
     mounted() {
+      this.initInfo();
       // not used yet
       // this.i18n = this.$i18n;
       // if (this.enableRTL) {
@@ -198,6 +201,7 @@
       //   this.$rtl.enableRTL();
       // }
       this.initBigChart(0);
+      this.$nextTick();
     },
     beforeDestroy() {
       // if (this.$rtl.isRTL) {
