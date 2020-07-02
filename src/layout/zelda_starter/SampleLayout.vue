@@ -6,7 +6,7 @@
         <sidebar-link to="/testRuns" :name="$t('sidebar.testRuns')" icon="tim-icons icon-chart-pie-36"/>
         </div>
         <div v-if="this.$sidebar.showSub==true">
-        <sidebar-link v-for="product in products" :key="product" :to= "'/testRuns/' + product" :name="product" />
+        <sidebar-link v-for="product in this.$sidebar.products" :key="product" :to= "'/testRuns/' + product.toLowerCase().replace(/ /, '-')" :name="product" />
         </div>
         <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/>
         <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/>
@@ -40,7 +40,7 @@
     },
     data() {
       return {
-        products: [],
+        curr: [],
         fake_api: [
           {
             run_name: 'RUN101',
@@ -98,20 +98,40 @@
          this.$sidebar.showSub=!this.$sidebar.showSub;
          console.log(this.$sidebar.showSub);
       },
-      initProducts() {
-          var api = this.fake_api;
-          var hash=[];
-          for (var i = 0; i < api.length; i++) {
-              if(hash.indexOf(api[i].product)==-1){
-                hash.push(api[i].product);
-              }
-          }
-          this.products = hash;
+      update() {
+        if (this.curr.length != 0){
+          console.log("product");
+          console.log(this.products);
+          console.log("curr");
+          console.log(this.curr);
+          this.$sidebar.products = this.curr;
+          };
+      },
+      initSidebar() {
+          var api = new Array();
+          this.curr = new Array();
+          axios
+          .get('http://10.73.2.3:12321/zelda/products')
+          .then(response => (
+            api = response.data, 
+            api.forEach(element => {
+            if (!(this.$sidebar.products.includes(element.name))){
+              this.curr.push(element.name);
+              console.log("this is not in the sidebar.products");
+            }
+          }),
+          console.log(this.curr.length),
+          this.update()
+          )).catch(function (error) { // 请求失败处理
+            console.log(error);
+          });
       }
     },
     created() {
-      this.initProducts();
-      this.$sidebar.products = this.products;
+      // initialize the side bar part of the page
+      // use a global variable to keep the products array alive
+      this.initSidebar();
+      
       this.$sidebar.api = this.fake_api;
     }
   };

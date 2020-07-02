@@ -5,6 +5,7 @@ const SidebarStore = {
   showSub: false,
   showSidebar: false,
   sidebarLinks: [],
+  products: [],
   displaySidebar(value) {
     this.showSidebar = value;
   } 

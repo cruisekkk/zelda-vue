@@ -84,8 +84,9 @@
     },
     data() {
       return {
+        product: "",
         labels: [],
-        api: this.$sidebar.api,
+        tableInfo: [],
         el: '#example-5',
         selected: ["container"
         ],
@@ -143,16 +144,24 @@
       }
     },
     created(){
-        var api = this.api;
-        var labels=[];
-          for (var i = 0; i < api.length; i++) {
-              if(api[i]['product'] == this.$route.params.product){
-                labels.push(api[i]['run_name']);
-              }
-          }
-        this.labels = labels;
-      },
+      this.initInfo();
+    },
     methods: {
+      initInfo(){
+        this.product = this.$route.params.product.toLowerCase().replace(/ /, '-');
+        axios
+          .get('http://10.73.2.3:12321/zelda/products/' + this.product + '/runs/summaries')
+          .then(response => (
+            this.tableInfo = response.data,
+            //console.log(response.data),
+            this.tableInfo.forEach( element => {
+              this.labels.push(element.run_name);
+            }),
+            console.log(this.labels)
+          )).catch(function (error) { // 请求失败处理
+            console.log(error);
+          });
+      },
       
       c(){
         console.log(this.api);
@@ -175,7 +184,6 @@
             data: this.bigLineChart.allData[index]
           }],
           labels: this.labels,
-          //['RUN321', 'RUN335', 'RUN375', 'RUN423', 'RUN445', 'RUN449'],
         }
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
