@@ -156,7 +156,8 @@
             //console.log(response.data),
             this.tableInfo.forEach( element => {
               this.labels.push(element.run_name);
-            })
+            }),
+            this.initBigChart(0)
           )).catch(function (error) { // 请求失败处理
             console.log(error);
           });
@@ -201,7 +202,6 @@
       //   this.$rtl.enableRTL();
       // }
       this.initBigChart(0);
-      this.$nextTick();
     },
     beforeDestroy() {
       // if (this.$rtl.isRTL) {
