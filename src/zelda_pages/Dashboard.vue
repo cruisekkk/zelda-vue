@@ -85,6 +85,9 @@
     data() {
       return {
         product: "",
+        pass: [],
+        fail: [],
+        na: [],
         labels: [],
         tableInfo: [],
         el: '#example-5',
@@ -92,9 +95,10 @@
         ],
         bigLineChart: {
           allData: [
-            [95, 70, 90, 70, 85, 60, 75, 60, 90, 80, 90, 100],
-            [80, 70, 95, 100, 95, 80, 90, 100, 80, 95, 70, 10],
-            [60, 80, 65, 90, 80, 95, 90, 100, 70, 100, 60, 10]
+            //[95, 70, 90, 70, 85, 60, 75, 60, 90, 80, 90, 100],
+            // this.pass,
+            // [80, 70, 95, 100, 95, 80, 90, 100, 80, 95, 70, 10],
+            // [60, 80, 65, 90, 80, 95, 90, 100, 70, 100, 60, 10]
           ],
           activeIndex: 0,
           chartData: null,
@@ -145,6 +149,9 @@
     },
     created(){
       //this.initInfo();
+      this.initInfo();
+
+      this.initBigChart(0); // this can simulate the queue style animation
     },
     methods: {
       initInfo(){
@@ -156,6 +163,9 @@
             //console.log(response.data),
             this.tableInfo.forEach( element => {
               this.labels.push(element.run_name);
+              this.pass.push(element.pass_count);
+              this.fail.push(element.fail_count);
+              this.na.push(element.na_count);
             }),
             this.initBigChart(0)
           )).catch(function (error) { // 请求失败处理
@@ -164,10 +174,7 @@
       },
       
       c(){
-        console.log(this.labels);
-        console.log(typeof this.labels);
-        console.log(this.labels[0]);
-        console.log(typeof this.labels[0]);
+        console.log(this.fail);
       },
       initBigChart(index) {
         let chartData = {
@@ -184,7 +191,8 @@
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
             pointRadius: 4,
-            data: this.bigLineChart.allData[index]
+            data: index == 0 ? this.pass : index == 1 ? this.fail : this.na // 线索
+            //this.bigLineChart.allData[index]
           }],
           labels: this.labels
         }
@@ -194,14 +202,10 @@
       }
     },
     mounted() {
-      this.initInfo();
-      // not used yet
-      // this.i18n = this.$i18n;
-      // if (this.enableRTL) {
-      //   this.i18n.locale = 'ar';
-      //   this.$rtl.enableRTL();
-      // }
-      this.initBigChart(0);
+      
+    },
+    watch: {
+      
     },
     beforeDestroy() {
       // if (this.$rtl.isRTL) {
