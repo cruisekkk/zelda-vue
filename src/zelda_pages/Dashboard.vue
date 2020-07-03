@@ -1,7 +1,7 @@
 <template>
-  <div @click = "c">
+  <div>
     
-    <div class="row">
+    <div class="row" @click="c">
       <div class="col-12">
         <card type="chart">
           <template slot="header">
@@ -56,7 +56,7 @@
       <div class="col-12">
         <card :title="$t('dashboard.RunsInfo')"> 
           <div class="table-responsive">
-            <dashboard-table thead-classes="text-primary">
+            <dashboard-table v-bind:api="this.tableInfo" thead-classes="text-primary">
 
             </dashboard-table>
           </div>
@@ -154,6 +154,9 @@
       this.initBigChart(0); // this can simulate the queue style animation
     },
     methods: {
+      c(){
+        console.log(this.tableInfo);
+      },
       initInfo(){
         this.product = this.$route.params.product.toLowerCase().replace(/ /, '-');
         axios
@@ -171,10 +174,6 @@
           )).catch(function (error) { // 请求失败处理
             console.log(error);
           });
-      },
-      
-      c(){
-        console.log(this.fail);
       },
       initBigChart(index) {
         let chartData = {

@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers" 
-    :items="cases"
+    :items="this.api"
     sort-by=""
     class="mytable table tablesorter dark"
     dark
@@ -17,9 +17,9 @@
     </template> -->
 
     <template v-slot:item.detail="{ item }" >
-      <router-link :to="{path:'/test-details/' + item.name}">
+      <router-link :to="{path:'/test-details/' + item.run_name}">
       <!-- <router-link :to="{path:'/runs/'+ item.userId}" > -->
-      <v-icon @click = "c(item)">
+      <v-icon>
         find_in_page
       </v-icon>
       </router-link>
@@ -35,20 +35,22 @@
 <script>
   export default {
     name: 'dashboard-table',
+    props: {
+      api: Array
+    },
     data: () => ({
-      api: [],
       dialog: false,
       headers: [
         {
           text: 'RUN NAME',
           align: 'start',
           sortable: false,
-          value: 'name', // name
+          value: 'run_name', // name
         },
-        { text: 'TOTAL', value: 'total' }, // total
-        { text: 'PASS', value: 'pass' }, // pass
-        { text: 'FAIL', value: 'fail' },
-        { text: 'N/A', value: 'na' },
+        { text: 'TOTAL', value: 'total_count' }, // total
+        { text: 'PASS', value: 'pass_count' }, // pass
+        { text: 'FAIL', value: 'fail_count' },
+        { text: 'N/A', value: 'na_count' },
         { text: 'DETAIL', value: 'detail', sortable: false },
       ],
       cases: [],
@@ -61,33 +63,33 @@
 
     mounted () {
     },
+    computed: {
+      newApi() {
+        return this.api;
+      }
+    },
+    watch: {
+      newApi(val){
+        for (let i = 0; i < this.api.length; i++){
+          this.api[i]["total_count"] = this.api[i]["na_count"] + this.api[i]["pass_count"] + this.api[i]["fail_count"];
+        }
+        this.c();
+        
+      }
+
+      
+    },
 
     methods: {
-      c(item) {
-          console.log("a");
-          console.log(item);
-          console.log("b");
-          console.log(this.api);
+      c() {
+        console.log("this is table");
+        console.log(this.api);
+          
       },
       initialize () {
       this.product = this.$route.params.product;
-      this.api = this.$sidebar.api;
-      var api = this.api;
-      var pro_name = this.product;
-      var case_array = [];
-      for (let i = 0; i < api.length; i++){
-        if (api[i]['product'] == pro_name){
-          let a = {};
-          a['name'] = api[i]['run_name'];
-          a['pass'] = api[i]['pass_count'];
-          a['fail'] = api[i]['fail_count'];
-          a['na'] = api[i]['na_count'];
-          a['total'] = a['pass'] + a['fail'] + a['na'];
-          case_array.push(a);
-        }
-      }
-      console.log(case_array);
-      this.cases = case_array;
+      //console.log(case_array);
+      //this.cases = case_array;
 
 
 
