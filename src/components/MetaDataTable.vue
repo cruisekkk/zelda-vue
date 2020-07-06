@@ -33,11 +33,6 @@
           { text: 'action', value: 'action'},
         ],
       attributes: [],
-      editedIndex: -1,
-      editedItem: {
-        attribute: '',
-        value: '',
-      },
       defaultItem: {
         attribute: '',
         value: '',
@@ -83,14 +78,6 @@
           },
   ]
   },
-
-      close () {
-        this.dialog = false
-        this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        })
-      },
     },
   }
 </script>
