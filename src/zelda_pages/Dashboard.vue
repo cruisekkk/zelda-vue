@@ -153,7 +153,7 @@
 
       this.initBigChart(0); // this can simulate the queue style animation
     },
-    methods: {
+    methods: { 
       c(){
         console.log(this.tableInfo);
       },

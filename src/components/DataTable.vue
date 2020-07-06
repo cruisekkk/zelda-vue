@@ -22,16 +22,16 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.userId" label="Test case name"></v-text-field>
+                    <v-text-field v-model="editedItem.name" label="Test case name"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.id" label="Result"></v-text-field>
+                    <v-text-field v-model="editedItem.result" label="Result"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.title" label="Bug"></v-text-field>
+                    <v-text-field v-model="editedItem.bug" label="Bug"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.completed" label="Comment"></v-text-field>
+                    <v-text-field v-model="editedItem.comments" label="Comment"></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
@@ -102,6 +102,10 @@
       },
     }),
 
+    props: {
+      table_api: Array
+    },
+
     watch: {
       dialog (val) {
         val || this.close()
@@ -110,9 +114,23 @@
 
     created () {
       //this.initialize()
+      
     },
 
     mounted () {
+    },
+
+    computed: {
+        newApi() {
+        return this.table_api;
+      }
+    },
+
+    watch: {
+        newApi(val) {
+          this.cases = this.table_api;
+        }
+
     },
 
     methods: {
