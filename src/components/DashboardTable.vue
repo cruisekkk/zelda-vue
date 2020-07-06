@@ -74,9 +74,7 @@
           this.api[i]["total_count"] = this.api[i]["na_count"] + this.api[i]["pass_count"] + this.api[i]["fail_count"];
         }
         this.c();
-        
       }
-
       
     },
 
