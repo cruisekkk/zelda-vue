@@ -38,47 +38,58 @@
         value: '',
       },
     }),
-
-
-    created () {
-      this.initialize()
+    props: {
+      meta_api: Object
     },
-
+    created () {
+      this.initialize();
+    },
+ 
     methods: {
       initialize () {
         this.attributes = [
           {
             attribute: 'Run name',
-            value: 'RUN350',
+            value: this.$route.params.run_name,
           },
           {
             attribute: 'Product',
-            value: 'Podman rpm',
+            value: this.meta_api.product,
           },
           {
             attribute: 'Start time',
-            value: '',
+            value: this.meta_api["start-time"],
           },
           {
             attribute: 'End time',
-            value: '',
+            value: this.meta_api["end-time"],
           },
           {
             attribute: 'Type',
-            value: 'rpm',
+            value: this.meta_api.type,
           },
           {
             attribute: 'Owner',
-            value: 'Johnny',
+            value: this.meta_api.owner,
 
           },
           {
             attribute: 'Arch',
-            value: 'x86',
+            value: this.meta_api.arch,
           },
   ]
   },
     },
+    computed: {
+      newApi() {
+        return this.meta_api;
+      }
+    },
+    watch: {
+      newApi() {
+        this.initialize();
+      }
+    }
   }
 </script>
 

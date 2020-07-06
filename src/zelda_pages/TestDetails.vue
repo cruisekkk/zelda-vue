@@ -4,7 +4,7 @@
       <div class="col-lg-4">
         <card class = "above">
           <div class="table-responsive">
-            <meta-data-table thead-classes="text-primary">
+            <meta-data-table thead-classes="text-primary" v-bind:meta_api = "this.runsInfo">
             </meta-data-table>
           </div>
         </card>
@@ -30,7 +30,7 @@
       <div class="col-12">
         <card :title="table1.title">
           <div class="table-responsive">
-            <data-table thead-classes="text-primary">
+            <data-table thead-classes="text-primary" v-bind:table_api = "this.tableInfo">
 
             </data-table>
           </div>
@@ -54,6 +54,9 @@ export default {
   },
   data() {
     return {
+      runsInfo: {},
+      tableInfo: [],
+      run_name: null,
       array: [],
       page: 1,
       table1: {
@@ -70,7 +73,6 @@ export default {
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
-              //data: [this.pass, this.fail, this.na]
               data: [],
             }]
           },
@@ -80,10 +82,25 @@ export default {
     };
   }, 
   created(){
-      this.initialize ()
+      this.initApi();
+      this.initializeChart ()
   },
   methods:{
-      initialize () {
+      initApi(){
+        this.run_name = this.$route.params.run_name;
+        axios
+          .get('http://10.73.2.3:12321/zelda/runs/' + this.run_name)
+          .then(response => (
+            this.runsInfo = response.data, // for meta-table
+            //console.log(this.runsInfo),
+            this.tableInfo = this.runsInfo.cases,
+            console.log(this.tableInfo)
+          )).catch(function (error) { // 请求失败处理
+            console.log(error);
+          });
+      },
+
+      initializeChart () {
         this.array = [55,20,5];
         console.log(this.blueBarChart.chartData.datasets[0].data);
         console.log(this.array);
