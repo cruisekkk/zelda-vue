@@ -3,12 +3,13 @@
   <component :is="tag"
              class="nav-item"
              v-bind="$attrs"
-             tag="li">
+             tag="li"
+             >
              
     <a class="nav-link left"> 
       <slot>
         <i v-if="icon" :class="icon"></i>
-        <p @click = "c"><span v-if='this.$sidebar.products.includes(name)' class="product"></span>{{name}}</p>
+        <p><span v-if='this.$sidebar.products.includes(name)' class="product"></span>{{name}}</p>
       </slot>
     </a>
   </component>
@@ -45,12 +46,6 @@ export default {
     isActive() {
       return this.$el.classList.contains("active");
     },
-    c(){// for test
-      // console.log(this.$sidebar.products);
-      // console.log("a");
-      // console.log(Object.getPrototypeOf(this.$sidebar.products));
-      // console.log(this.$sidebar.products.includes("podman"));
-    }
 
   },
   mounted() {
