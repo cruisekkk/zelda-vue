@@ -13,14 +13,16 @@
         <card type="chart" class = "above">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
-            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> Run name: podman</h3>
+            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> {{"Run name: " + this.run_name}}</h3>
           </template>
           <div class="chart-area" >
             <bar-chart style="height: 100%"
                        chart-id="blue-bar-chart"
                        :chart-data="blueBarChart.chartData"
                        :gradient-stops="blueBarChart.gradientStops"
-                       :extra-options="blueBarChart.extraOptions">
+                       :extra-options="blueBarChart.extraOptions"
+                       v-if ="bar_init"
+                       >
             </bar-chart>
           </div>
         </card>
@@ -55,9 +57,10 @@ export default {
   data() {
     return {
       runsInfo: {},
+      bar_init: false,
       tableInfo: [],
       run_name: null,
-      array: [],
+      result_data: [],
       page: 1,
       table1: {
         title: "Test Cases from podman",
@@ -83,7 +86,10 @@ export default {
   }, 
   created(){
       this.initApi();
-      this.initializeChart ()
+      //this.blueBarChart.chartData.datasets[0].data = [1,2,3];
+  },
+  updated(){
+      //this.initializeChart();
   },
   methods:{
       initApi(){
@@ -94,19 +100,40 @@ export default {
             this.runsInfo = response.data, // for meta-table
             //console.log(this.runsInfo),
             this.tableInfo = this.runsInfo.cases,
-            console.log(this.tableInfo)
+            this.initializeChart(),
+            this.bar_init = true
+            //console.log(this.tableInfo)
           )).catch(function (error) { // 请求失败处理
             console.log(error);
           });
       },
 
       initializeChart () {
-        this.array = [55,20,5];
+        this.result_data = this.gen_result();
+        //Object.assign(this.blueBarChart.chartData.datasets[0].data,this.result_data);
+        this.$set(this.blueBarChart.chartData.datasets[0], "data", this.result_data);
         console.log(this.blueBarChart.chartData.datasets[0].data);
-        console.log(this.array);
-        console.log(this.blueBarChart.gradientStops);
-        this.blueBarChart.chartData.datasets[0].data = this.array;
+        console.log(this.result_data);
+        
       },
+
+      gen_result() {
+        let pass = 0;
+        let fail = 0;
+        let na = 0;
+        for (let i of this.tableInfo){
+          if (i.result.toString() == "0"){
+                pass++;
+            }
+            else if (i.result.toString() == "1"){
+                fail++;
+            }
+            else if (i.result.toString() == "2"){
+                na++;
+            }
+        }
+        return [pass, fail, na];
+      }  
 
       
   }
