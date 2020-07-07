@@ -129,13 +129,28 @@
     watch: {
         newApi(val) {
           this.cases = this.table_api;
+          this.result_transform();
         }
 
     },
 
     methods: {
       initialize () {
-  },
+      },
+
+      result_transform () {
+        for (let i of this.cases) {
+            if (i.result.toString() == "0"){
+                i.result = "Pass";
+            }
+            else if (i.result.toString() == "1"){
+                i.result = "Fail";
+            }
+            else if (i.result.toString() == "2"){
+                i.result = "NA";
+            }
+        }
+      },
 
       editItem (item) {
         this.editedIndex = this.cases.indexOf(item)
