@@ -5,10 +5,24 @@
     sort-by="calories"
     class="mytable table tablesorter dark"
     dark
+    calculate-widths="true"
   >
     <template v-slot:item.result="{ item }">
       <v-chip :class="`${item.result}`" >{{ item.result }}</v-chip>
     </template>
+
+    <template v-slot:item.name="{item}">
+      <div style="width: 250px">{{ item.name }}</div>
+    </template>
+
+    <template v-slot:item.bug="{item}">
+      <div style="width: 200px">{{ item.bug }}</div>
+    </template>
+
+     <template v-slot:item.comments="{item}">
+      <div style="width: 250px">{{ item.comments }}</div>
+    </template>
+
 
     <template v-slot:top>
         <div data-app>
@@ -80,10 +94,14 @@
           align: 'start',
           sortable: false,
           value: 'name', // name
+          width: 50
         },
         { text: 'RESULT', value: 'result' }, // result
         { text: 'BUG', value: 'bug' }, // bug
-        { text: 'COMMENT', value: 'comments' }, // comment
+        { 
+          text: 'COMMENT', value: 'comments' ,
+          width: 200
+        }, // comment
         { text: 'ACTION', value: 'actions', sortable: false },
       ],
       cases: [],

@@ -63,7 +63,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 span {
     margin-left: 32px;
 }
