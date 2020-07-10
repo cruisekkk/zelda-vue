@@ -15,6 +15,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import RouterPrefetch from 'vue-router-prefetch'
 import Vuetify from "vuetify";
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from "./App";
 // TIP: change to import router from "./router/starterRouter"; to start with a clean layout
 import router from "./router/index";
@@ -26,6 +28,7 @@ import './registerServiceWorker'
 // Vue.use(VCalendar);
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
+Vue.use(ElementUI);
 Vue.use(RouterPrefetch);
 
 /* eslint-disable no-new */
