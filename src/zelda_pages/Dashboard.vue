@@ -206,7 +206,6 @@
       status(){
         let str = this.bigLineChart.activeIndex == 0 ? "Pass": this.bigLineChart.activeIndex ==1? "Fail" : "NA";
         return str + " rate %";
-        //return (index == 0 ? "pass": index ==1? "fail" : "na") + " rate%";
       }
     },
     mounted() {
