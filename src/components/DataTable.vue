@@ -7,20 +7,24 @@
     dark
     calculate-widths="true"
   >
-    <template v-slot:item.result="{ item }">
+    <!-- <template v-slot:item.result="{ item }">
       <v-chip :class="`${item.result}`" >{{ item.result }}</v-chip>
-    </template>
+    </template> -->
 
     <template v-slot:item.name="{item}">
-      <div style="width: 250px">{{ item.name }}</div>
+      <div style="width: 350px">{{ item.name }}</div>
+    </template>
+
+    <template v-slot:item.result="{item}">
+      <v-chip :class="`${item.result}`" style="width: 60px" >{{ item.result }}</v-chip>
     </template>
 
     <template v-slot:item.bug="{item}">
-      <div style="width: 200px">{{ item.bug }}</div>
+      <div style="width: 100px">{{ item.bug }}</div>
     </template>
 
      <template v-slot:item.comments="{item}">
-      <div style="width: 250px">{{ item.comments }}</div>
+      <div style="width: 270px">{{ item.comments }}</div>
     </template>
 
 
