@@ -2,7 +2,7 @@
   "dashboard": {
     "completedTasks": "Completed Tasks",
     "testCases": "Test Cases",
-    "performance": "Performance rate",
+    "performance": "Performance rate % ",
     "RunsInfo": "Runs Info",
     "totalRuns": "Total runs",
     "resultCategories": [

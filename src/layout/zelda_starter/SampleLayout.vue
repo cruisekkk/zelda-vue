@@ -9,7 +9,7 @@
         <sidebar-link v-for="product in this.$sidebar.products" :key="product" :to= "'/testRuns/' + product.toLowerCase().replace(/ /, '-')" :name="product" />
         </div>
         <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/>
-        <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/>
+        <!-- <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/> -->
         <sidebar-link to="/calendar" :name="$t('sidebar.calendar')" icon="tim-icons icon-calendar-60"/> 
       </template> 
     </side-bar>

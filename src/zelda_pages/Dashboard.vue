@@ -8,7 +8,7 @@
             <div class="row">
               <div class="col-sm-7" :class="isRTL ? 'text-right' : 'text-left'">
                 <h5 class="card-category">{{$t('dashboard.totalRuns')}}</h5>
-                <h2 class="card-title">{{$t('dashboard.performance')}}</h2>
+                <h2 class="card-title">{{this.status()}}</h2>
               </div>
               <div class="col-sm-2">
                 <div id="example-5" >
@@ -88,6 +88,9 @@
         pass: [],
         fail: [],
         na: [],
+        pass_rate: [],
+        fail_rate: [],
+        na_rate: [],
         labels: [],
         tableInfo: [],
         el: '#example-5',
@@ -95,10 +98,6 @@
         ],
         bigLineChart: {
           allData: [
-            //[95, 70, 90, 70, 85, 60, 75, 60, 90, 80, 90, 100],
-            // this.pass,
-            // [80, 70, 95, 100, 95, 80, 90, 100, 80, 95, 70, 10],
-            // [60, 80, 65, 90, 80, 95, 90, 100, 70, 100, 60, 10]
           ],
           activeIndex: 0,
           chartData: null,
@@ -169,6 +168,11 @@
               this.pass.push(element.pass_count);
               this.fail.push(element.fail_count);
               this.na.push(element.na_count);
+              // init the rate
+              let total = element.pass_count + element.fail_count + element.na_count;
+              this.pass_rate.push(Math.floor(element.pass_count/total *100));
+              this.fail_rate.push(Math.floor(element.fail_count/total *100));
+              this.na_rate.push(Math.floor(element.na_count/total *100));
             }),
             this.initBigChart(0)
           )).catch(function (error) { // 请求失败处理
@@ -190,7 +194,7 @@
             pointHoverRadius: 4,
             pointHoverBorderWidth: 15,
             pointRadius: 4,
-            data: index == 0 ? this.pass : index == 1 ? this.fail : this.na // 线索
+            data: index == 0 ? this.pass_rate : index == 1 ? this.fail_rate : this.na_rate // 线索
             //this.bigLineChart.allData[index]
           }],
           labels: this.labels
@@ -198,6 +202,11 @@
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;
+      },
+      status(){
+        let str = this.bigLineChart.activeIndex == 0 ? "Pass": this.bigLineChart.activeIndex ==1? "Fail" : "NA";
+        return str + " rate %";
+        //return (index == 0 ? "pass": index ==1? "fail" : "na") + " rate%";
       }
     },
     mounted() {
