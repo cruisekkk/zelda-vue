@@ -99,10 +99,16 @@ export default {
           .then(response => (
             this.runsInfo = response.data, // for meta-table
             //console.log(this.runsInfo),
-            this.tableInfo = this.runsInfo.cases,
+            this.tableInfo = this.runsInfo.cases.filter((value) =>{
+              if (!!value){
+                return true;
+              }
+              return false;
+            }),
+            
+            console.log(this.tableInfo),
             this.initializeChart(),
             this.bar_init = true
-            //console.log(this.tableInfo)
           )).catch(function (error) { // 请求失败处理
             console.log(error);
           });

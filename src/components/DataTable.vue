@@ -109,6 +109,7 @@
         { text: 'ACTION', value: 'actions', sortable: false },
       ],
       cases: [],
+      run_name: '',
       editedIndex: -1,
       editedItem: {
         userId: '',
@@ -136,7 +137,7 @@
 
     created () {
       //this.initialize()
-      
+      this.run_name = this.$route.params.run_name;
     },
 
     mounted () {
@@ -183,6 +184,14 @@
       deleteItem (item) {
         const index = this.cases.indexOf(item)
         confirm('Are you sure you want to delete this item?') && this.cases.splice(index, 1)
+        console.log('http://10.73.2.3:12321/zelda/runs/' + this.run_name + '/cases/' + item['_id']['$oid'])
+        axios
+          .delete('http://10.73.2.3:12321/zelda/runs/' + this.run_name + '/cases/' + item['_id']['$oid'])
+          .then(response => (
+            console.log(response.data) // for meta-table
+          )).catch(function (error) { // 请求失败处理
+            console.log(error);
+          })
       },
 
       close () {
