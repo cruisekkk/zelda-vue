@@ -12,7 +12,7 @@
     </template> -->
 
     <template v-slot:item.name="{item}">
-      <div style="width: 350px">{{ item.name }}</div>
+      <div style="width: 300px">{{ item.name }}</div>
     </template>
 
     <template v-slot:item.result="{item}">
@@ -39,17 +39,17 @@
             <v-card-text>
               <v-container>
                 <v-row>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.name" label="Test case name"></v-text-field>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-text-field v-model="editedItem.name" label="Test case name" disabled></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.result" label="Result"></v-text-field>
+                    <v-text-field v-model="editedItem.result" label="Result" disabled></v-text-field>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4">
+                  <v-col cols="12" sm="12" md="12">
                     <v-text-field v-model="editedItem.bug" label="Bug"></v-text-field>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.comments" label="Comment"></v-text-field>
+                  <v-col cols="12" sm="12" md="12">
+                    <v-textarea solo v-model="editedItem.comments" label="Comment"></v-textarea>
                   </v-col>
                 </v-row>
               </v-container>
