@@ -209,15 +209,18 @@
           this.cases.push(this.editedItem)
         }
         this.close();
-        axios.post('https://jsonplaceholder.typicode.com/users/1/todos', {
-        editedItem
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        axios
+          .post('http://10.73.2.3:12321/zelda/runs/' + this.run_name + '/cases/' + this.editedItem['_id']['$oid'] + '/update',
+          {
+            bug: this.editedItem.bug,
+            comments: this.editedItem.comments
+          }
+          )
+          .then(response => (
+            console.log(response.data) 
+          )).catch(function (error) { // 请求失败处理
+            console.log(error);
+          })
       },
 
       getColor (result) {
