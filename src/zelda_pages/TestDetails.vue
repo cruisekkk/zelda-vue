@@ -43,8 +43,6 @@
 <script>
 import BarChart from '@/components/Charts/BarChart';
 import * as chartConfigs from '@/components/Charts/config';
-import TaskList from '../pages/Dashboard/TaskList';
-import UserTable from '../pages/Dashboard/UserTable';
 import config from '@/config';
 import {DataTable}  from "@/components";
 import {MetaDataTable}  from "@/components";

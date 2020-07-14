@@ -9,7 +9,6 @@
         <sidebar-link v-for="product in this.$sidebar.products" :key="product" :to= "'/testRuns/' + product.toLowerCase().replace(/ /, '-')" :name="product" />
         </div>
         <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/>
-        <!-- <sidebar-link to="/profile" :name="$t('sidebar.userProfile')" icon="tim-icons icon-single-02"/> -->
         <sidebar-link to="/calendar" :name="$t('sidebar.calendar')" icon="tim-icons icon-calendar-60"/> 
       </template> 
     </side-bar>
@@ -41,50 +40,6 @@
     data() {
       return {
         curr: [],
-        fake_api: [
-          {
-            run_name: 'RUN101',
-            product: 'podman',
-            pass_count: 3,
-            fail_count: 4,
-            na_count: 1,
-          },
-          {
-            run_name: 'RUN102',
-            product: 'podman',
-            pass_count: 2,
-            fail_count: 3,
-            na_count: 0,
-          },
-          {
-            run_name: 'RUN103',
-            product: 'docker',
-            pass_count: 2,
-            fail_count: 3,
-            na_count: 0,
-          },
-          {
-            run_name: 'RUN104',
-            product: 'podman',
-            pass_count: 7,
-            fail_count: 2,
-            na_count: 4,
-          },
-          {
-            run_name: 'RUN105',
-            product: 'docker',
-            pass_count: 10,
-            fail_count: 7,
-            na_count: 3,
-          },
-          {
-            run_name: 'RUN106',
-            product: 'rhel7',
-            pass_count: 5,
-            fail_count: 5,
-            na_count: 3,
-          }
-        ]
       }
       
     },

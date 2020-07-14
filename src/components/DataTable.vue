@@ -7,9 +7,6 @@
     dark
     calculate-widths="true"
   >
-    <!-- <template v-slot:item.result="{ item }">
-      <v-chip :class="`${item.result}`" >{{ item.result }}</v-chip>
-    </template> -->
 
     <template v-slot:item.name="{item}">
       <div style="width: 300px">{{ item.name }}</div>
