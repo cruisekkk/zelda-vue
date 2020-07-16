@@ -1,7 +1,25 @@
 <template>
+      <card>
+        <div class="row">
+      <!-- <div class="col-12"> -->
+          <div class="col-5"><p>Runs Info</p></div>
+            <div class="col-7">
+  <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+          dark
+          class="input"
+        ></v-text-field>
+        </div>
+        <div class="table-responsive">
+          <div>
   <v-data-table
     :headers="headers" 
     :items="this.api"
+    :search="search"
     sort-by=""
     class="mytable table tablesorter dark"
     dark
@@ -30,6 +48,10 @@
     </template>
     
   </v-data-table>
+  </div>
+  </div>
+  </div>
+  </card>
 </template>
 
 <script>
@@ -39,6 +61,7 @@
       api: Array
     },
     data: () => ({
+      search: '',
       dialog: false,
       headers: [
         {
@@ -86,37 +109,6 @@
       },
       initialize () {
       this.product = this.$route.params.product;
-      //console.log(case_array);
-      //this.cases = case_array;
-
-
-
-
-
-      //var p = this.product;
-
-      // reference for real restful api
-      // axios
-      // .get('https://jsonplaceholder.typicode.com/users/1/todos')
-      // .then(response => (this.cases = response.data, 
-      // this.cases = this.cases.filter(function (elem) {
-      //   console.log(p);
-      //   if (p == 'docker'){
-      //     return (
-      //       elem.completed.toString() == 'false'
-      //       );
-      //   }
-      //   else {
-      //     return (elem.completed.toString() == 'true')
-      //   }
-      // },
-      // console.log(this.cases),
-      // ))
-      // .catch(function (error) { // 请求失败处理
-      //   console.log(error);
-      // }));
-
-      //console.log(this.$route.params.product);
   },
       getColor (result) {
         if (result == 'Fail') return 'red'
@@ -128,6 +120,14 @@
 </script>
 
 <style scoped>
+.input {
+  margin: 0px;
+  padding: 0px;
+}
+p {
+  color: rgba(212, 212, 212, 0.6);
+  font-size: 1.4rem;
+}
 .mytable {
     background-color: transparent;
     border-bottom: none;

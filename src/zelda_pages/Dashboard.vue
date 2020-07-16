@@ -52,18 +52,11 @@
         </card>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <card :title="$t('dashboard.RunsInfo')"> 
-          <div class="table-responsive">
+    
             <dashboard-table v-bind:api="this.tableInfo" thead-classes="text-primary">
 
             </dashboard-table>
-          </div>
-        </card>
       </div>
-    </div>
-  </div>
 </template>
 <script>
   import vSelect from 'vue-select';
