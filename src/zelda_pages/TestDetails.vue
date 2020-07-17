@@ -27,17 +27,8 @@
           </div>
         </card>
       </div>
-
-
-      <div class="col-12">
-        <card :title="table1.title">
-          <div class="table-responsive">
-            <data-table thead-classes="text-primary" v-bind:table_api = "this.tableInfo">
-
-            </data-table>
-          </div>
-        </card>
-      </div>
+      <data-table thead-classes="text-primary" v-bind:table_api = "this.tableInfo">
+      </data-table>
     </div>
 </template>
 <script>

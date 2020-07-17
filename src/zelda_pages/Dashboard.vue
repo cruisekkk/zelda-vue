@@ -53,9 +53,9 @@
       </div>
     </div>
     
-            <dashboard-table v-bind:api="this.tableInfo" thead-classes="text-primary">
+        <dashboard-table v-bind:api="this.tableInfo" thead-classes="text-primary">
 
-            </dashboard-table>
+        </dashboard-table>
       </div>
 </template>
 <script>

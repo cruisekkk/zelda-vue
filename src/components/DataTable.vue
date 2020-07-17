@@ -1,7 +1,24 @@
 <template>
+        <card>
+        <div class="row">
+          <div class="col-5"><p>Test Cases</p></div>
+            <div class="col-7">
+  <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+          dark
+          class="input"
+        ></v-text-field>
+        </div>
+        <div class="table-responsive">
+          <div>
   <v-data-table
     :headers="headers"
     :items="cases"
+    :search="search"
     sort-by="calories"
     class="mytable table tablesorter dark"
     dark
@@ -82,12 +99,17 @@
     </template>
     
   </v-data-table>
+  </div>
+  </div>
+  </div>
+  </card>
 </template>
 
 <script>
   export default {
     name: 'data-table',
     data: () => ({
+      search: '',
       dialog: false,
       headers: [
         {
@@ -230,6 +252,14 @@
 </script>
 
 <style scoped>
+.input {
+  margin: 0px;
+  padding: 0px;
+}
+p {
+  color: rgba(212, 212, 212, 0.6);
+  font-size: 1.4rem;
+}
 .mytable {
     background-color: transparent;
     border-bottom: none;
