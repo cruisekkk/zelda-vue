@@ -8,7 +8,7 @@
         <div v-if="this.$sidebar.showSub==true">
         <sidebar-link v-for="product in this.$sidebar.products" :key="product" :to= "'/testRuns/' + product.toLowerCase().replace(/ /, '-')" :name="product" />
         </div>
-        <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/>
+        <!-- <sidebar-link to="/test-details" :name="$t('sidebar.testDetails')" icon="tim-icons icon-puzzle-10"/> -->
         <sidebar-link to="/calendar" :name="$t('sidebar.calendar')" icon="tim-icons icon-calendar-60"/> 
       </template> 
     </side-bar>
