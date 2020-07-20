@@ -135,7 +135,7 @@ export default {
 
 };
 </script>
-<style>
+<style scoped>
 .above {
   height: 355px;
 }
