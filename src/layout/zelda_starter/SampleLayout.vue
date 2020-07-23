@@ -1,5 +1,6 @@
 <template> 
   <div class="wrapper">
+    <!-- <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark--200.png" alt=""> -->
     <side-bar> 
       <template slot="links">
         <div @click="toggleSub">
@@ -14,6 +15,7 @@
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>
+      <img id="red_hat_logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark--200.png" alt="">
 
       <dashboard-content @click.native="toggleSidebar">
 
@@ -91,3 +93,12 @@
     }
   };
 </script>
+
+<style scoped>
+  #red_hat_logo{
+    position: absolute;
+    right: 6px;
+    top: 7px;
+    transform:scale(0.6);
+  }
+</style>
