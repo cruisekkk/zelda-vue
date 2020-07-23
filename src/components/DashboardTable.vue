@@ -1,8 +1,8 @@
 <template>
       <card>
         <div class="row">
-          <div class="col-6"><p>Runs Info</p></div>
-            <div class="col-6">
+          <div class="col-9"><p>Runs Info</p></div>
+            <div class="col-3">
   <v-text-field
           v-model="search"
           append-icon="mdi-magnify"

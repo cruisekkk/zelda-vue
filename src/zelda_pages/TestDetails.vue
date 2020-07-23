@@ -9,7 +9,7 @@
           </div>
         </card>
       </div>
-      <div class="col-lg-8" :class="{'text-right': isRTL}">
+      <div class="col-lg-8">
         <card type="chart" class = "above">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
@@ -75,7 +75,6 @@ export default {
   }, 
   created(){
       this.initApi();
-      //this.blueBarChart.chartData.datasets[0].data = [1,2,3];
   },
   updated(){
       //this.initializeChart();
@@ -87,15 +86,12 @@ export default {
           .get('http://10.73.2.3:12321/zelda/runs/' + this.run_name)
           .then(response => (
             this.runsInfo = response.data, // for meta-table
-            //console.log(this.runsInfo),
             this.tableInfo = this.runsInfo.cases.filter((value) =>{
               if (!!value){
                 return true;
               }
               return false;
             }),
-            
-            console.log(this.tableInfo),
             this.initializeChart(),
             this.bar_init = true
           )).catch(function (error) { // 请求失败处理
@@ -107,9 +103,6 @@ export default {
         this.result_data = this.gen_result();
         //Object.assign(this.blueBarChart.chartData.datasets[0].data,this.result_data);
         this.$set(this.blueBarChart.chartData.datasets[0], "data", this.result_data);
-        console.log(this.blueBarChart.chartData.datasets[0].data);
-        console.log(this.result_data);
-        
       },
 
       gen_result() {

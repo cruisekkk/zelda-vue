@@ -2,9 +2,9 @@
   <footer class="footer">
     <div class="container-fluid">
       <div class="copyright">
-        © {{year}} made with <i class="tim-icons icon-heart-2"></i> by
-        <a href="https://www.binarcode.com" target="_blank" rel="noopener">Binar Code</a>&nbsp;&
-        <a href="https://www.creative-tim.com" target="_blank" rel="noopener">Creative Tim</a> for a better web.
+        © {{year}} made by
+        <a href="https://www.binarcode.com" target="_blank" rel="noopener">Edward</a>&nbsp;&
+        <a href="https://www.creative-tim.com" target="_blank" rel="noopener">Johnny</a>
       </div>
     </div>
   </footer>
