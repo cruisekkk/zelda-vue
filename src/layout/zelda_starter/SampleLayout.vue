@@ -97,8 +97,8 @@
 <style scoped>
   #red_hat_logo{
     position: absolute;
-    right: 6px;
-    top: 7px;
-    transform:scale(0.6);
+    right: -3px;
+    top: 9px;
+    transform:scale(0.5);
   }
 </style>

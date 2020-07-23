@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="row">
+  <div class="col-lg-12">
+    <card class = "above">
     <div class="home">
-      <card class="above">  
         <div class="description">
           <div class="desc_word">
             <p class="head_title">Zelda</p> 
           </div>
           <div class="desc_word">
-            <p class="h3">Where you can supervise, edit and update testing cases.</p>
+            <p class="h3">Where you can visualize and update your Daily QE Work</p>
           </div>  
         </div>
-      </card>
     </div>
   <div class="row">
       <div class="col-lg-12">
-        <card class = "above">
+        
           <div class="table-responsive">
             <div class="title">
               <p class="h4">Product General status</p>
@@ -30,8 +30,10 @@
             </bar-chart>
           </div>
           </div>
-        </card>
+        
       </div>
+  </div>
+  </card>
   </div>
   </div>
 </template>
@@ -56,7 +58,7 @@ export default {
           chartData: {
             labels: [],
             datasets: [{
-              label: "Cases",
+              label: "Test Runs",
               fill: true,
               borderColor: config.colors.info,
               borderWidth: 2,
@@ -93,7 +95,7 @@ export default {
 </script>
 <style scoped>
   .home .above{
-    
+    background-color: transparent;
   }
 
   .description {
@@ -128,6 +130,6 @@ export default {
     width: 25%;
     padding-bottom: 5px;
     text-align: center;
-    border-bottom: 0.7px white solid;
+    /* border-bottom: 0.7px white solid; */
   }
 </style>
