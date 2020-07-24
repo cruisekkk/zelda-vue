@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <div class="row" @click="c">
+    <div class="row">
       <div class="col-12">
         <card type="chart">
           <template slot="header">
@@ -97,30 +97,6 @@
           gradientStops: [1, 0.4, 0],
           categories: []
         },
-        greenLineChart: {
-          extraOptions: chartConfigs.greenChartOptions,
-          chartData: {
-            labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
-            datasets: [{
-              label: "My First dataset",
-              fill: true,
-              borderColor: config.colors.danger,
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: config.colors.danger,
-              pointBorderColor: 'rgba(255,255,255,0)',
-              pointHoverBackgroundColor: config.colors.danger,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [90, 27, 60, 12, 80],
-            }]
-          },
-          gradientColors: ['rgba(66,134,121,0.15)', 'rgba(66,134,121,0.0)', 'rgba(66,134,121,0)'],
-          gradientStops: [1, 0.4, 0],
-        }
       }
     },
     computed: {
@@ -138,14 +114,13 @@
       }
     },
     created(){
-      //this.initInfo();
       this.initInfo();
-
-      this.initBigChart(0); // this can simulate the queue style animation
     },
     methods: { 
-      c(){
-        console.log(this.tableInfo);
+      keeplabels(){
+        while(this.labels.length > 50){
+          this.labels.shift();
+        }
       },
       initInfo(){
         this.product = this.$route.params.product.toLowerCase().replace(/ /, '-');
@@ -156,6 +131,7 @@
             //console.log(response.data),
             this.tableInfo.forEach( element => {
               this.labels.push(element.run_name);
+              this.keeplabels();
               this.pass.push(element.pass_count);
               this.fail.push(element.fail_count);
               this.na.push(element.na_count);
@@ -171,6 +147,7 @@
           });
       },
       initBigChart(index) {
+
         let chartData = {
           datasets: [{
             fill: true,
@@ -206,10 +183,6 @@
       
     },
     beforeDestroy() {
-      // if (this.$rtl.isRTL) {
-      //   this.i18n.locale = 'en';
-      //   this.$rtl.disableRTL();
-      // }
     }
   };
 </script>
