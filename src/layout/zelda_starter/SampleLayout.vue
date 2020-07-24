@@ -1,6 +1,5 @@
 <template> 
   <div class="wrapper">
-    <!-- <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark--200.png" alt=""> -->
     <side-bar> 
       <template slot="links">
         <div @click="toggleSub">

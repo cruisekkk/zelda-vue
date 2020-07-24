@@ -43,7 +43,6 @@
       
     </template>
     <template v-slot:no-data>
-      <v-btn color="primary" @click="initialize">Loading</v-btn>
       <v-progress-circular
         indeterminate
         color="primary"

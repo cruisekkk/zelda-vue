@@ -26,9 +26,9 @@ export default {
           for (let i=0; i < document.styleSheets.length; i++){
             let styleSheet = document.styleSheets[i];
             let { href } = styleSheet;
-            if(href && href.endsWith('bootstrap-rtl.css')){
-              styleSheet.disabled = !value;
-            }
+            // if(href && href.endsWith('bootstrap-rtl.css')){
+            //   styleSheet.disabled = !value;
+            // }
           }
         }
       }

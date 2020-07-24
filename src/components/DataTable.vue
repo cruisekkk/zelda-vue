@@ -95,7 +95,10 @@
       </v-icon>
     </template>
     <template v-slot:no-data>
-      <v-btn color="primary" @click="initialize">Reset</v-btn>
+      <v-progress-circular
+        indeterminate
+        color="primary"
+      ></v-progress-circular>
     </template>
     
   </v-data-table>
