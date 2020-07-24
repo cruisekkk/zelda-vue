@@ -12,7 +12,7 @@
       <div class="col-lg-8">
         <card type="chart" class = "above">
           <template slot="header">
-            <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
+            <h5 class="card-category">Test Results</h5>
             <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info "></i> {{"Run name: " + this.run_name}}</h3>
           </template>
           <div class="chart-area" >
