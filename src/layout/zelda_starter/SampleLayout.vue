@@ -2,9 +2,9 @@
   <div class="wrapper">
     <side-bar> 
       <template slot="links">
-        <div @click="toggleSub">
+        <div  @click="toggleSub">
         <sidebar-link to="/testRuns" :name="$t('sidebar.testRuns')" icon="tim-icons icon-chart-pie-36"/>
-        </div>
+        </div> 
         <div v-if="this.$sidebar.showSub==true">
         <sidebar-link v-for="product in this.$sidebar.products" :key="product" :to= "'/testRuns/' + product.toLowerCase().replace(/ /, '-')" :name="product" />
         </div>

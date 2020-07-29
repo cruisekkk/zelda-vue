@@ -9,8 +9,13 @@
     <a class="nav-link left"> 
       <slot>
         <i v-if="icon" :class="icon"></i>
-        <p><span v-if='this.$sidebar.products.includes(name)' class="product"></span>{{name}}</p>
-      </slot>
+        <p id="p"><span v-if='this.$sidebar.products.includes(name)' class="product"></span>
+        {{name}}
+        <span v-if='name=="Test Runs" && this.$sidebar.showSub==false'><i id="spinning_icon_left" class="tim-icons"></i></span>
+        <span v-if='name=="Test Runs" && this.$sidebar.showSub==true'><i id="spinning_icon_down" class="tim-icons"></i></span>
+        </p>
+
+      </slot> 
     </a>
   </component>
 </template>
@@ -64,6 +69,25 @@ export default {
 };
 </script>
 <style scoped>
+#p {
+  display: inline-block;
+}
+#spinning_icon_left::before, #spinning_icon_down::before{
+  content:''
+}
+#spinning_icon_left::after {
+  content:'\ea34';
+}
+ 
+ #spinning_icon_down::after {
+  content:'\ea33';
+}
+
+i#spinning_icon_left, i#spinning_icon_down{
+  float: right !important;
+  transform: scale(0.8) translateX(20px);
+}
+
 span {
     margin-left: 32px;
 }
