@@ -7,7 +7,7 @@
           <template slot="header">
             <div class="row">
               <div class="col-sm-7" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category">{{$t('dashboard.totalRuns')}}</h5>
+                <h5 class="card-category">Runs</h5>
                 <h2 class="card-title">{{this.status()}}</h2>
               </div>
               <div class="col-sm-2">

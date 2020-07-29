@@ -4,7 +4,7 @@
     "testCases": "Test Cases",
     "performance": "Performance rate % ",
     "RunsInfo": "Runs Info",
-    "totalRuns": "Total runs",
+    "totalRuns": "Runs",
     "resultCategories": [
       "Pass ",
       "Fail ",
