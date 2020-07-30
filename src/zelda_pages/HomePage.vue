@@ -5,7 +5,7 @@
     <div class="home">
         <div class="description">
           <div class="desc_word">
-            <p class="head_title">Zelda</p> 
+            <p class="head_title">ZELDA</p> 
           </div>
           <div class="desc_word">
             <p class="h3">Where you can visualize and update your Daily QE Work</p>
@@ -111,7 +111,7 @@ export default {
     text-align: center;
     display: block;
     font-size: 50px;
-    font-family: Georgia;
+    /* font-family: Georgia; */
     font-weight:550;
     margin-bottom: 20px;
   }

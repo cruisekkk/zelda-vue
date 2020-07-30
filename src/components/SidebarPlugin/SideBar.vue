@@ -17,7 +17,7 @@
               alt="">
           </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="https://docs.engineering.redhat.com/display/ATOMICQE/Zelda+project" class="simple-text logo-normal">
           {{title}}
         </a>
       </div>

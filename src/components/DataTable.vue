@@ -54,7 +54,7 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="12" md="12">
-                    <v-text-field v-model="editedItem.name" label="Test case name" disabled></v-text-field>
+                    <v-text-field v-model="editedItem.name" label="Name" disabled></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
                     <v-text-field v-model="editedItem.result" label="Result" disabled></v-text-field>
