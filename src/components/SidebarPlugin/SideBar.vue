@@ -8,7 +8,7 @@
     <!-- -->
     <div class="sidebar-wrapper" id="style-3">
       <div class="logo">
-        <a href="http://www.creative-tim.com"
+        <a href="https://docs.engineering.redhat.com/display/ATOMICQE/Zelda+project"
            aria-label="sidebar mini logo"
            class="simple-text logo-mini">
           <div class="logo-img">
