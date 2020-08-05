@@ -83,7 +83,7 @@ export default {
       initApi(){
         this.run_name = this.$route.params.run_name;
         axios
-          .get('http://10.73.2.3:12321/zelda/runs/' + this.run_name)
+          .get('http://10.0.105.81:12321/zelda/runs/' + this.run_name)
           .then(response => (
             this.runsInfo = response.data, // for meta-table
             this.tableInfo = this.runsInfo.cases.filter((value) =>{

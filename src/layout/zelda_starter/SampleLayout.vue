@@ -67,7 +67,7 @@
           var api = new Array();
           this.curr = new Array();
           axios
-          .get('http://10.73.2.3:12321/zelda/products')
+          .get('http://10.0.105.81:12321/zelda/products')
           .then(response => (
             api = response.data, 
             api.forEach(element => {

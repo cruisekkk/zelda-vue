@@ -117,21 +117,23 @@
       this.initInfo();
     },
     methods: { 
-      keeplabels(){
+      keep50labels(){
         while(this.labels.length > 50){
           this.labels.shift();
+          this.pass_rate.shift();
+          this.fail_rate.shift();
+          this.na_rate.shift();
         }
       },
       initInfo(){
         this.product = this.$route.params.product.toLowerCase().replace(/ /, '-');
         axios
-          .get('http://10.73.2.3:12321/zelda/products/' + this.product + '/runs/summaries')
+          .get('http://10.0.105.81:12321/zelda/products/' + this.product + '/runs/summaries')
           .then(response => (
             this.tableInfo = response.data,
             //console.log(response.data),
             this.tableInfo.forEach( element => {
               this.labels.push(element.run_name);
-              this.keeplabels();
               this.pass.push(element.pass_count);
               this.fail.push(element.fail_count);
               this.na.push(element.na_count);
@@ -140,6 +142,7 @@
               this.pass_rate.push(Math.floor(element.pass_count/total *100));
               this.fail_rate.push(Math.floor(element.fail_count/total *100));
               this.na_rate.push(Math.floor(element.na_count/total *100));
+              this.keep50labels();
             }),
             this.initBigChart(0)
           )).catch(function (error) { // 请求失败处理
