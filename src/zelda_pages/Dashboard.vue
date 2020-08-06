@@ -128,7 +128,7 @@
       initInfo(){
         this.product = this.$route.params.product.toLowerCase().replace(/ /, '-');
         axios
-          .get('http://10.0.105.81:12321/zelda/products/' + this.product + '/runs/summaries')
+          .get('http://10.73.2.3:12321/zelda/products/' + this.product + '/runs/summaries')
           .then(response => (
             this.tableInfo = response.data,
             //console.log(response.data),

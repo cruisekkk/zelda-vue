@@ -73,7 +73,7 @@ export default {
     }
   },
   created(){
-    axios.get('http://10.0.105.81:12321/zelda/products')
+    axios.get('http://10.73.2.3:12321/zelda/products')
           .then(response => (
             response.data.forEach((value) =>{
               this.product_labels.push(value.name);
