@@ -53,7 +53,7 @@
       </div>
     </div>
     
-        <dashboard-table v-bind:api="this.tableInfo" thead-classes="text-primary">
+        <dashboard-table v-bind:api="this.tableInfo" @table-update="this.updateTable" @restore-graph="this.restore" thead-classes="text-primary">
 
         </dashboard-table>
       </div>
@@ -117,6 +117,39 @@
       this.initInfo();
     },
     methods: { 
+      clearLables(){
+        this.labels = [];
+          this.pass = [];
+          this.fail = [];
+          this.na = [];
+          this.pass_rate = [];
+          this.fail_rate = [];
+          this.na_rate = [];
+      },
+      restore() {
+        this.clearLables();
+        this.initInfo();
+      },
+      updateTable(newtable){
+        //console.log("newtable is !!:" + newtable);
+          this.clearLables();
+          this.tableInfo = newtable,
+          this.tableInfo.forEach( element => {
+            this.labels.push(element.run_name);
+            this.pass.push(element.pass_count);
+            this.fail.push(element.fail_count);
+            this.na.push(element.na_count);
+            // init the rate
+            let total = element.pass_count + element.fail_count + element.na_count;
+            this.pass_rate.push(Math.floor(element.pass_count/total *100));
+            this.fail_rate.push(Math.floor(element.fail_count/total *100));
+            this.na_rate.push(Math.floor(element.na_count/total *100));
+            this.keep50labels();
+          }),
+          this.initBigChart(0)
+
+      },
+
       keep50labels(){
         while(this.labels.length > 50){
           this.labels.shift();
@@ -186,6 +219,7 @@
       
     },
     beforeDestroy() {
+
     }
   };
 </script>

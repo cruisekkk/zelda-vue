@@ -3,6 +3,7 @@
         <div class="row">
           <div class="col-9"><p>Runs Info</p></div>
             <div class="col-3">
+              <p v-if="search" v-on:click="this.send_search_data">update button(还没想好图标= =，先点这里！)</p>
   <v-text-field
           v-model="search"
           append-icon="mdi-magnify"
@@ -23,15 +24,6 @@
     class="mytable table tablesorter dark"
     dark
   >
-    <!-- <template v-slot:item.pass="{ item }">
-      <v-chip small class="pass" >{{ item.pass }}</v-chip>
-    </template>
-    <template v-slot:item.fail="{ item }">
-      <v-chip small class="fail" >{{ item.fail }}</v-chip>
-    </template>
-    <template v-slot:item.na="{ item }">
-      <v-chip small class="na" >{{ item.na }}</v-chip>
-    </template> -->
 
     <template v-slot:item.detail="{ item }" >
       <router-link :to="{path:'/test-details/' + item.run_name}">
@@ -64,6 +56,7 @@
     },
     data: () => ({
       search: '',
+      searchTable: [],
       dialog: false,
       headers: [
         {
@@ -91,6 +84,9 @@
     computed: {
       newApi() {
         return this.api;
+      },
+      newSearch() {
+        return this.search;
       }
     },
     watch: {
@@ -98,17 +94,17 @@
         for (let i = 0; i < this.api.length; i++){
           this.api[i]["total_count"] = this.api[i]["na_count"] + this.api[i]["pass_count"] + this.api[i]["fail_count"];
         }
-        this.c();
+      },
+      newSearch(val){
+        if (val.length == 0){
+          this.$emit('restore-graph');
+        }
+        this.updateSearchTable(val);
       }
       
     },
 
     methods: {
-      c() {
-        console.log("this is table");
-        console.log(this.api);
-          
-      },
       initialize () {
       this.product = this.$route.params.product;
   },
@@ -117,7 +113,35 @@
         else if (result == 'N/A') return 'orange'
         else return 'green'
       },
+      updateSearchTable(keyword) { 
+        
+        let length = keyword.length;
+        let table = [];
+        for (let obj of this.api){
+          let find = false;
+          let search_arr = [String(obj.fail_count), String(obj.na_count), String(obj.pass_count), String(obj.run_name), String(obj.total_count)];   
+          for (let attr of search_arr){
+            if (attr.length >= length) {
+              for (let i = 0; i <= attr.length - length; i++){
+                if (attr.slice(i, i+ length) === keyword){
+                  find = true;
+                  break;
+                }
+              }
+            }
+            if (find) break;
+          }
+          if (find) table.push(obj);
+        }
+        this.searchTable = table;
+      },
+
+      send_search_data(newdata){
+        this.$emit('table-update', this.searchTable);
+      }
     },
+
+  
   }
 </script>
 
