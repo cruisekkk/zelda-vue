@@ -183,6 +183,6 @@ p {
 }
 .unsearched{
   color: #adb5bd;
-  opacity: 60%;
+  opacity: 60% !important;
 }
 </style>
