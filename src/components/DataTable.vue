@@ -207,7 +207,7 @@
         const index = this.cases.indexOf(item)
         confirm('Are you sure you want to delete this item?') && this.cases.splice(index, 1)
         axios
-          .delete('http://10.73.2.3:12321/zelda/runs/' + this.run_name + '/cases/' + item['_id']['$oid'])
+          .delete('http://10.0.105.81:12321/zelda/runs/' + this.run_name + '/cases/' + item['_id']['$oid'])
           .then(response => (
             console.log(response.data) // for meta-table
           )).catch(function (error) { // 请求失败处理
@@ -231,7 +231,7 @@
         }
         this.close();
         axios
-          .post('http://10.73.2.3:12321/zelda/runs/' + this.run_name + '/cases/' + this.editedItem['_id']['$oid'] + '/update',
+          .post('http://10.0.105.81:12321/zelda/runs/' + this.run_name + '/cases/' + this.editedItem['_id']['$oid'] + '/update',
           {
             bug: this.editedItem.bug,
             comments: this.editedItem.comments
