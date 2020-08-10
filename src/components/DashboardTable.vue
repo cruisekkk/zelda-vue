@@ -182,7 +182,6 @@ p {
   content: "\ea18";
 }
 .unsearched{
-  color: #adb5bd;
-  opacity: 60% !important;
+  color: gray;
 }
 </style>
