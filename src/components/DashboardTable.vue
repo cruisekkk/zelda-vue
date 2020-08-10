@@ -1,9 +1,16 @@
 <template>
       <card>
         <div class="row">
-          <div class="col-9"><p>Runs Info</p></div>
-            <div class="col-3">
-              <p v-if="search" v-on:click="this.send_search_data">update button(还没想好图标= =，先点这里！)</p>
+          <div class="col-8">
+            <p>Runs Info</p>
+          </div>
+          <div class="col-1">
+          <p v-show="!search"><i id="icon-chart-bar-32" class="tim-icons unsearched"></i></p>
+          <p v-show="search" v-on:click="this.send_search_data">
+                <i id="icon-chart-bar-32" class="tim-icons"></i>
+                </p>
+          </div>
+          <div class="col-3">
   <v-text-field
           v-model="search"
           append-icon="mdi-magnify"
@@ -169,5 +176,13 @@ p {
 }
 .v-icon {
     color: #7af0e4;
+}
+
+#icon-chart-bar-32::before {
+  content: "\ea18";
+}
+.unsearched{
+  color: #adb5bd;
+  opacity: 60%;
 }
 </style>

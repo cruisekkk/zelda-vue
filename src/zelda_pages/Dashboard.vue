@@ -53,7 +53,7 @@
       </div>
     </div>
     
-        <dashboard-table v-bind:api="this.tableInfo" @table-update="this.updateTable" @restore-graph="this.restore" thead-classes="text-primary">
+        <dashboard-table v-bind:api="this.tableApi" @table-update="this.updateTable" @restore-graph="this.restore" thead-classes="text-primary">
 
         </dashboard-table>
       </div>
@@ -84,6 +84,7 @@
         na_rate: [],
         labels: [],
         tableInfo: [],
+        tableApi: [],
         el: '#example-5',
         selected: ["container"
         ],
@@ -163,6 +164,7 @@
         axios
           .get('http://10.73.2.3:12321/zelda/products/' + this.product + '/runs/summaries')
           .then(response => (
+            this.tableApi = response.data,
             this.tableInfo = response.data,
             //console.log(response.data),
             this.tableInfo.forEach( element => {

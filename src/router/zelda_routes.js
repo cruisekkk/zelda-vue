@@ -12,7 +12,6 @@ Vue.use(Router);
 
 // Admin pages
 const Dashboard = () => import(/* webpackChunkName: "dashboard" */"@/zelda_pages/Dashboard.vue");
-const Icons = () => import(/* webpackChunkName: "common" */ "@/pages/Icons.vue");
 const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typography.vue");
 const TestDetails = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/TestDetails.vue");
 const Calendar = () => import(/* webpackChunkName: "common" */ "@/zelda_pages/Calendar.vue");
@@ -33,11 +32,6 @@ const routes = [
         path: "testRuns/:product",
         name: "testRuns",
         component: Dashboard
-      },
-      {
-        path: "icons",
-        name: "icons",
-        component: Icons
       },
       {
         path: "calendar",
